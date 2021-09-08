@@ -31,18 +31,20 @@ class LoginWindow(qtw.QWidget):
                     passwd="1jC:=s@ZFWWs",  # Passwort im Klartext
                     database="HPDB")  # Name der Datenbank
                 cursordb = connectiondb.cursor()
-                username_verification = self.ui.user_edit.text()
-                password_verification = self.ui.pass_edit.text()
-                sql = "select * from login where userid = %s and password = %s"
-                cursordb.execute(sql, [(username_verification), (password_verification)])
-                results = cursordb.fetchall()
-                if results:
-                    for i in results:
-                        qtw.QMessageBox.information(self, 'Erfolreich angemeldet', 'Sie sind angemeldet')
-                else:
-                    qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
-            except mysql.Error:
-                qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zur Datenbank möglich')
+                if connectiondb.is_connected():
+                    username_verification = self.ui.user_edit.text()
+                    password_verification = self.ui.pass_edit.text()
+                    sql = "select * from login where userid = %s and password = %s"
+                    cursordb.execute(sql, [(username_verification), (password_verification)])
+                    results = cursordb.fetchall()
+                    if results:
+                        for i in results:
+                            qtw.QMessageBox.information(self, 'Erfolreich angemeldet', 'Sie sind angemeldet')
+                    else:
+                        qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
+                else
+                    qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
+
 
 
     def register(self):
