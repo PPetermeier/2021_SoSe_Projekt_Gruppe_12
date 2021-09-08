@@ -41,9 +41,9 @@ class Ui_Form(object):
         self.login = QtWidgets.QPushButton(self.gridLayoutWidget)
         self.login.setObjectName("login")
         self.gridLayout.addWidget(self.login, 0, 0, 1, 1)
-        self.register_2 = QtWidgets.QPushButton(self.gridLayoutWidget)
-        self.register_2.setObjectName("register_2")
-        self.gridLayout.addWidget(self.register_2, 0, 1, 1, 1)
+        self.register = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.register.setObjectName("register_2")
+        self.gridLayout.addWidget(self.register, 0, 1, 1, 1)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -54,7 +54,7 @@ class Ui_Form(object):
         self.label.setText(_translate("Form", "Username"))
         self.label_2.setText(_translate("Form", "Password"))
         self.login.setText(_translate("Form", "Login"))
-        self.register_2.setText(_translate("Form", "Register"))
+        self.register.setText(_translate("Form", "Register"))
 
 
 if __name__ == "__main__":
