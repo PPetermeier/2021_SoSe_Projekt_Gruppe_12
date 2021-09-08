@@ -73,6 +73,8 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Username"))
         self.label_3.setText(_translate("MainWindow", "Password"))
 
+        #kommentar
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
