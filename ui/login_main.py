@@ -26,7 +26,7 @@ class LoginWindow(qtw.QWidget):
         else:
             try:
                 connectiondb = mysql.connector.connect(
-                    host="192.168.178.42",  # IP Adresse der DB. Genutzt wird der default Port 3306
+                    host="jonaswoelfer.de",  # IP Adresse der DB. Genutzt wird der default Port 3306
                     user="root",  # Username der DB
                     passwd="1jC:=s@ZFWWs",  # Passwort im Klartext
                     database="HPDB")  # Name der Datenbank
@@ -44,13 +44,10 @@ class LoginWindow(qtw.QWidget):
             except Exception as err:
                 qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
 
-
-
     def register(self):
-
         try:
             connectiondb = mysql.connector.connect(
-                host="192.168.178.42",  # IP Adresse der DB. Genutzt wird der default Port 3306
+                host="jonaswoelfer.de",  # IP Adresse der DB. Genutzt wird der default Port 3306
                 user="root",  # Username der DB
                 passwd="1jC:=s@ZFWWs",  # Passwort im Klartext
                 database="HPDB")  # Name der Datenbank
