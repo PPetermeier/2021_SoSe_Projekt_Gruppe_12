@@ -24,13 +24,13 @@ class LoginWindow(qtw.QWidget):
         if username == 'admin' and password == 'admin':
             qtw.QMessageBox.information(self, 'Erfolreich angemeldet', 'Sie sind angemeldet')
         else:
-            connectiondb = mysql.connector.connect(
-                host="192.168.178.42",  # IP Adresse der DB. Genutzt wird der default Port 3306
-                user="root",  # Username der DB
-                passwd="1jC:=s@ZFWWs",  # Passwort im Klartext
-                database="HPDB")  # Name der Datenbank
-            cursordb = connectiondb.cursor()
-            if (connectiondb.is_connected()):
+            try:
+                connectiondb = mysql.connector.connect(
+                    host="192.168.178.42",  # IP Adresse der DB. Genutzt wird der default Port 3306
+                    user="root",  # Username der DB
+                    passwd="1jC:=s@ZFWWs",  # Passwort im Klartext
+                    database="HPDB")  # Name der Datenbank
+                cursordb = connectiondb.cursor()
                 username_verification = self.ui.user_edit.text()
                 password_verification = self.ui.pass_edit.text()
                 sql = "select * from login where userid = %s and password = %s"
@@ -41,32 +41,35 @@ class LoginWindow(qtw.QWidget):
                         qtw.QMessageBox.information(self, 'Erfolreich angemeldet', 'Sie sind angemeldet')
                 else:
                     qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
-            else:
+            except Exception as err:
                 qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
 
 
 
     def register(self):
 
-        connectiondb = mysql.connector.connect(
-            host="192.168.178.42",  # IP Adresse der DB. Genutzt wird der default Port 3306
-            user="root",  # Username der DB
-            passwd="1jC:=s@ZFWWs",  # Passwort im Klartext
-            database="HPDB")  # Name der Datenbank
-        cursordb = connectiondb.cursor()
-        username_toCreate = self.ui.user_edit.text()
-        password_toCreate = self.ui.pass_edit.text()
-        sql = "select * from login where userid = %s"  # Prüfen, ob der Username bereits vergeben ist
-        cursordb.execute(sql, [(username_toCreate)])
-        results = cursordb.fetchall()
-        if results:  # Wurde der Username in der LoginDB gefunden, wird False zurückgegeben und es wird kein Account angelegt.
-            for i in results:
-                qtw.QMessageBox.critical(self, 'Fehler', 'Der Nutzername ist bereits vergeben')
-        else:  # Wurde der Username nicht in der LoginDB gefunden, so wird ein neuer Account angelegt und True zurückgegeben.
-            sql = "insert into login (userid, password) values (%s,%s)"
-            cursordb.execute(sql, [(username_toCreate), (password_toCreate)])
-            connectiondb.commit()
-            qtw.QMessageBox.information(self, 'Erfolreich Registriert', 'Ihr Account wurde erstellt.')
+        try:
+            connectiondb = mysql.connector.connect(
+                host="192.168.178.42",  # IP Adresse der DB. Genutzt wird der default Port 3306
+                user="root",  # Username der DB
+                passwd="1jC:=s@ZFWWs",  # Passwort im Klartext
+                database="HPDB")  # Name der Datenbank
+            cursordb = connectiondb.cursor()
+            username_toCreate = self.ui.user_edit.text()
+            password_toCreate = self.ui.pass_edit.text()
+            sql = "select * from login where userid = %s"  # Prüfen, ob der Username bereits vergeben ist
+            cursordb.execute(sql, [(username_toCreate)])
+            results = cursordb.fetchall()
+            if results:  # Wurde der Username in der LoginDB gefunden, wird False zurückgegeben und es wird kein Account angelegt.
+                for i in results:
+                    qtw.QMessageBox.critical(self, 'Fehler', 'Der Nutzername ist bereits vergeben')
+            else:  # Wurde der Username nicht in der LoginDB gefunden, so wird ein neuer Account angelegt und True zurückgegeben.
+                sql = "insert into login (userid, password) values (%s,%s)"
+                cursordb.execute(sql, [(username_toCreate), (password_toCreate)])
+                connectiondb.commit()
+                qtw.QMessageBox.information(self, 'Erfolreich Registriert', 'Ihr Account wurde erstellt.')
+        except Exception as err:
+            qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
 
 if __name__ == '__main__':
     app = qtw.QApplication([])
