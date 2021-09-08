@@ -24,26 +24,25 @@ class LoginWindow(qtw.QWidget):
         if username == 'admin' and password == 'admin':
             qtw.QMessageBox.information(self, 'Erfolreich angemeldet', 'Sie sind angemeldet')
         else:
-            try:
-                connectiondb = mysql.connector.connect(
-                    host="192.168.178.42",  # IP Adresse der DB. Genutzt wird der default Port 3306
-                    user="root",  # Username der DB
-                    passwd="1jC:=s@ZFWWs",  # Passwort im Klartext
-                    database="HPDB")  # Name der Datenbank
-                cursordb = connectiondb.cursor()
-                if connectiondb.is_connected():
-                    username_verification = self.ui.user_edit.text()
-                    password_verification = self.ui.pass_edit.text()
-                    sql = "select * from login where userid = %s and password = %s"
-                    cursordb.execute(sql, [(username_verification), (password_verification)])
-                    results = cursordb.fetchall()
-                    if results:
-                        for i in results:
-                            qtw.QMessageBox.information(self, 'Erfolreich angemeldet', 'Sie sind angemeldet')
-                    else:
-                        qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
-                else
-                    qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
+            connectiondb = mysql.connector.connect(
+                host="192.168.178.42",  # IP Adresse der DB. Genutzt wird der default Port 3306
+                user="root",  # Username der DB
+                passwd="1jC:=s@ZFWWs",  # Passwort im Klartext
+                database="HPDB")  # Name der Datenbank
+            cursordb = connectiondb.cursor()
+            if (connectiondb.is_connected()):
+                username_verification = self.ui.user_edit.text()
+                password_verification = self.ui.pass_edit.text()
+                sql = "select * from login where userid = %s and password = %s"
+                cursordb.execute(sql, [(username_verification), (password_verification)])
+                results = cursordb.fetchall()
+                if results:
+                    for i in results:
+                        qtw.QMessageBox.information(self, 'Erfolreich angemeldet', 'Sie sind angemeldet')
+                else:
+                    qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
+            else:
+                qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
 
 
 
