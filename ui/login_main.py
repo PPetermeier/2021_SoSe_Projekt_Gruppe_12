@@ -1,4 +1,4 @@
-from loginframe import Ui_Form
+from loginframe import Ui_Login
 
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
@@ -10,11 +10,11 @@ class LoginWindow(qtw.QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.ui = Ui_Form()
+        self.ui = Ui_Login()
         self.ui.setupUi(self)
 
-        self.ui.login.clicked.connect(self.authenticate)
-        self.ui.register.clicked.connect(self.register)
+        self.ui.login_button.clicked.connect(self.authenticate)
+        self.ui.register_button.clicked.connect(self.register)
 
     def authenticate(self):
 
