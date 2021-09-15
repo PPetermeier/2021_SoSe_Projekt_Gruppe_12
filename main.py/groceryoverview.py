@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'grocery_overview.ui'
+# Form implementation generated from reading ui file 'groceryoverview.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -85,6 +85,11 @@ class Ui_Einkaufsplaner(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem7)
+        self.b_openlist = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.b_openlist.setStyleSheet("background-color: grey;\n"
+"color: white;")
+        self.b_openlist.setObjectName("b_openlist")
+        self.horizontalLayout_3.addWidget(self.b_openlist)
         self.b_newlist = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.b_newlist.setStyleSheet("background-color: orange;\n"
 "color: white;")
@@ -119,6 +124,7 @@ class Ui_Einkaufsplaner(object):
         item = self.listofflist.item(2)
         item.setText(_translate("Einkaufsplaner", "Wocheneinkauf"))
         self.listofflist.setSortingEnabled(__sortingEnabled)
+        self.b_openlist.setText(_translate("Einkaufsplaner", "Liste ansehen"))
         self.b_newlist.setText(_translate("Einkaufsplaner", "Neue Liste"))
         self.b_delete.setText(_translate("Einkaufsplaner", "Liste entfernen"))
 import menu_rc

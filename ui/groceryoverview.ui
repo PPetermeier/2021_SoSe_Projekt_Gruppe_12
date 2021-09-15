@@ -241,6 +241,17 @@ color: white;</string>
        </spacer>
       </item>
       <item>
+       <widget class="QPushButton" name="b_openlist">
+        <property name="styleSheet">
+         <string notr="true">background-color: grey;
+color: white;</string>
+        </property>
+        <property name="text">
+         <string>Liste ansehen</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="b_newlist">
         <property name="styleSheet">
          <string notr="true">background-color: orange;
