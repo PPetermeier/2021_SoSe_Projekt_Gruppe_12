@@ -39,6 +39,8 @@ class LoginWindow(qtw.QWidget):
                 if results:
                     for i in results:
                         qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
+                        widget = LoginWindow()
+                        widget.show()
                 else:
                     qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
             except Exception as err:
