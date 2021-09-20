@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0eba860c-4811-4b93-824a-f737856f8703" name="Default Changelist" comment="Datenbank auf online umgestellt. Wenn der Port meiner DB freigegeben ist kann der Login nun über das Internet erfolgen." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1uibVPRZ9FeFsXIUMcnAnW0Qfka" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/Spielbereich" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\THM\HaushaltsplanerPy\main.py" />
+      <recent name="G:\THM\HaushaltsplanerPy\ui" />
+      <recent name="G:\THM\HaushaltsplanerPy\ui\rc" />
+      <recent name="G:\THM\HaushaltsplanerPy\JSON" />
+      <recent name="G:\THM\HaushaltsplanerPy\database_prototype" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.login_main">
+    <configuration name="NoSQLConnectionTest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="HaushaltsplanerPy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/database_prototype" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/database_prototype/NoSQLConnectionTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="budgetplanerframe" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="HaushaltsplanerPy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main.py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py/budgetplanerframe.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="login_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="HaushaltsplanerPy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main.py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py/login_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="loginframe" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="HaushaltsplanerPy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main.py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py/loginframe.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="newtransactionframe" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="HaushaltsplanerPy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main.py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py/newtransactionframe.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.login_main" />
+        <item itemvalue="Python.loginframe" />
+        <item itemvalue="Python.newtransactionframe" />
+        <item itemvalue="Python.budgetplanerframe" />
+        <item itemvalue="Python.NoSQLConnectionTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0eba860c-4811-4b93-824a-f737856f8703" name="Default Changelist" comment="" />
+      <created>1625151381957</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1625151381957</updated>
+      <workItem from="1631105203832" duration="7848000" />
+      <workItem from="1631123183918" duration="229000" />
+      <workItem from="1631125033070" duration="1787000" />
+      <workItem from="1631166688699" duration="728000" />
+      <workItem from="1631188873568" duration="3188000" />
+      <workItem from="1631706667458" duration="1437000" />
+    </task>
+    <task id="LOCAL-00001" summary="Kurzes Programm, mit dem man die Verbindung zur NoSQL Datenbank prüfen kann.">
+      <created>1625565774482</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1625565774482</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Erste Version von nutzbaren Schnittstellen zur Login Datenbank. Man kann sich einloggen oder einen neuen Account anlegen. Ggf. muss die Datenbankverbindung angepasst werden, sollten wir eine DB der Hochschule verwenden.">
+      <created>1628494501882</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628494501882</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Erste Version von nutzbaren Schnittstellen zur Login Datenbank. Man kann sich einloggen oder einen neuen Account anlegen. Ggf. muss die Datenbankverbindung angepasst werden, sollten wir eine DB der Hochschule verwenden.">
+      <created>1629649702093</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1629649702093</updated>
+    </task>
+    <task id="LOCAL-00004" summary="aa">
+      <created>1631105298611</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1631105298611</updated>
+    </task>
+    <task id="LOCAL-00005" summary="loginUi">
+      <created>1631107543401</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1631107543401</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Loginframe mit der Login Funktion">
+      <created>1631108970641</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1631108970641</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fehlermeldung wenn keine Verbindung zur LoginDB besteht eingefügt.">
+      <created>1631109944555</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1631109944555</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fehlermeldung wenn keine Verbindung zur LoginDB besteht eingefügt.">
+      <created>1631110413353</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1631110413353</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fehlermeldung wenn keine Verbindung zur LoginDB besteht eingefügt.">
+      <created>1631110822327</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1631110822327</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Haushaltsplaner Logo auf Loginseite eingefügt">
+      <created>1631112120269</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1631112120269</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Datenbank auf online umgestellt. Wenn der Port meiner DB freigegeben ist kann der Login nun über das Internet erfolgen.">
+      <created>1631126452723</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1631126452723</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Kurzes Programm, mit dem man die Verbindung zur NoSQL Datenbank prüfen kann." />
+    <MESSAGE value="Erste Version von nutzbaren Schnittstellen zur Login Datenbank. Man kann sich einloggen oder einen neuen Account anlegen. Ggf. muss die Datenbankverbindung angepasst werden, sollten wir eine DB der Hochschule verwenden." />
+    <MESSAGE value="aa" />
+    <MESSAGE value="loginUi" />
+    <MESSAGE value="Loginframe mit der Login Funktion" />
+    <MESSAGE value="Fehlermeldung wenn keine Verbindung zur LoginDB besteht eingefügt." />
+    <MESSAGE value="Haushaltsplaner Logo auf Loginseite eingefügt" />
+    <MESSAGE value="Datenbank auf online umgestellt. Wenn der Port meiner DB freigegeben ist kann der Login nun über das Internet erfolgen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Datenbank auf online umgestellt. Wenn der Port meiner DB freigegeben ist kann der Login nun über das Internet erfolgen." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py/login_main.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
