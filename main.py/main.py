@@ -1,5 +1,10 @@
 from loginframe import Ui_Login
 from menuframe import Ui_Haushaltsplaner
+from budgetplanerframe import Ui_Budgetplaner
+from newtransactionframe import Ui_AddTransaction
+from groceryitemframe import Ui_Groceryitemframe
+from grocerymainframe import Ui_Grocerymainframe
+
 
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
@@ -21,7 +26,6 @@ class LoginWindow(qtw.QWidget):
 
         self.ui.login_button.clicked.connect(self.authenticate)
         self.ui.register_button.clicked.connect(self.register)
-
 
     def authenticate(self):
 
@@ -78,10 +82,102 @@ class MenuWindow(qtw.QWidget):
         self.ui = Ui_Haushaltsplaner()
         self.ui.setupUi(self)
         self.ui.b_logout.clicked.connect(self.logout)
+        self.ui.b_grocery.clicked.connect(self.opengrocery)
+        self.ui.b_budget.clicked.connect(self.openbudget)
+
+    def opengrocery(self):
+        menuwidget.close()
+        grocerymainwidget.show()
+
+    def openbudget(self):
+        menuwidget.close()
+        budgetplanerwidget.show()
 
     def logout(self):
         menuwidget.close()
         loginwidget.show()
+
+
+
+
+
+
+
+class GrocerymainWindow(qtw.QWidget):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.ui = Ui_Grocerymainframe()
+        self.ui.setupUi(self)
+        self.ui.b_back.clicked.connect(self.back)
+        self.ui.b_newlist.clicked.connect(self.newList)
+
+    def back(self):
+        grocerymainwidget.close()
+        menuwidget.show()
+    def newList(self):
+        grocerymainwidget.close()
+        groceryitemwidget.show()
+
+
+
+
+
+
+
+class GroceryitemWindow(qtw.QWidget):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.ui = Ui_Groceryitemframe()
+        self.ui.setupUi(self)
+        self.ui.b_back.clicked.connect(self.back)
+
+    def back(self):
+        groceryitemwidget.close()
+        grocerymainwidget.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class BudgetplanerMainWindow(qtw.QWidget):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.ui = Ui_Budgetplaner()
+        self.ui.setupUi(self)
+        self.ui.b_back.clicked.connect(self.back)
+        self.ui.b_addtransaction.clicked.connect(self.addTransaction)
+
+    def back(self):
+        budgetplanerwidget.close()
+        menuwidget.show()
+    def addTransaction(self):
+        addtransactionwidget.show()
+
+
+class AddTransactionWindow(qtw.QWidget):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.ui = Ui_AddTransaction()
+        self.ui.setupUi(self)
 
 
 if __name__ == '__main__':
@@ -91,6 +187,10 @@ if __name__ == '__main__':
     loginwidget.show()
 
     menuwidget = MenuWindow()
+    budgetplanerwidget = BudgetplanerMainWindow()
+    addtransactionwidget = AddTransactionWindow()
+    grocerymainwidget = GrocerymainWindow()
+    groceryitemwidget = GroceryitemWindow()
 
 
     app.exec_()
