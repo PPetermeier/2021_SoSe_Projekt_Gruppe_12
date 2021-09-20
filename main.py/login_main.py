@@ -1,4 +1,5 @@
 from loginframe import Ui_Login
+from menuframe import Ui_Haushaltsplaner
 
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
@@ -21,6 +22,7 @@ class LoginWindow(qtw.QWidget):
         self.ui.login_button.clicked.connect(self.authenticate)
         self.ui.register_button.clicked.connect(self.register)
 
+
     def authenticate(self):
 
         username = self.ui.user_edit.text()
@@ -28,6 +30,8 @@ class LoginWindow(qtw.QWidget):
 
         if username == 'admin' and password == 'admin':
             qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
+            loginwidget.close()
+            menuwidget.show()
         else:
             try:
                 cursordb = cnx.cursor()
@@ -39,8 +43,8 @@ class LoginWindow(qtw.QWidget):
                 if results:
                     for i in results:
                         qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
-                        widget = LoginWindow()
-                        widget.show()
+                        loginwidget.close()
+                        menuwidget.show()
                 else:
                     qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
             except Exception as err:
@@ -61,15 +65,33 @@ class LoginWindow(qtw.QWidget):
                 sql = "insert into user_database_login (username, userpassword) values (%s,%s)"
                 cursordb.execute(sql, [(username_toCreate), (password_toCreate)])
                 cnx.commit()
-                qtw.QMessageBox.information(self, 'Erfolreich Registriert', 'Ihr Account wurde erstellt.')
+                qtw.QMessageBox.information(self, 'Erfolgreich Registriert', 'Ihr Account wurde erstellt.')
         except Exception as err:
-            qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
+                qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
+
+
+class MenuWindow(qtw.QWidget):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.ui = Ui_Haushaltsplaner()
+        self.ui.setupUi(self)
+        self.ui.b_logout.clicked.connect(self.logout)
+
+    def logout(self):
+        menuwidget.close()
+        loginwidget.show()
+
 
 if __name__ == '__main__':
     app = qtw.QApplication([])
 
-    widget = LoginWindow()
-    widget.show()
+    loginwidget = LoginWindow()
+    loginwidget.show()
+
+    menuwidget = MenuWindow()
+
 
     app.exec_()
 
