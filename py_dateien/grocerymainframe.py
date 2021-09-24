@@ -127,6 +127,7 @@ class Ui_Grocerymainframe(object):
         self.b_openlist.setText(_translate("Einkaufsplaner", "Liste ansehen"))
         self.b_newlist.setText(_translate("Einkaufsplaner", "Neue Liste"))
         self.b_delete.setText(_translate("Einkaufsplaner", "Liste entfernen"))
+
 import menu_rc
 
 

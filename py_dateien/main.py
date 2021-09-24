@@ -73,7 +73,6 @@ class LoginWindow(qtw.QWidget):
         except Exception as err:
                 qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
 
-
 class MenuWindow(qtw.QWidget):
 
     def __init__(self, *args, **kwargs):
@@ -97,12 +96,6 @@ class MenuWindow(qtw.QWidget):
         menuwidget.close()
         loginwidget.show()
 
-
-
-
-
-
-
 class GrocerymainWindow(qtw.QWidget):
 
     def __init__(self, *args, **kwargs):
@@ -120,12 +113,6 @@ class GrocerymainWindow(qtw.QWidget):
         grocerymainwidget.close()
         groceryitemwidget.show()
 
-
-
-
-
-
-
 class GroceryitemWindow(qtw.QWidget):
 
     def __init__(self, *args, **kwargs):
@@ -138,21 +125,6 @@ class GroceryitemWindow(qtw.QWidget):
     def back(self):
         groceryitemwidget.close()
         grocerymainwidget.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class BudgetplanerMainWindow(qtw.QWidget):
 
@@ -170,7 +142,6 @@ class BudgetplanerMainWindow(qtw.QWidget):
     def addTransaction(self):
         addtransactionwidget.show()
 
-
 class AddTransactionWindow(qtw.QWidget):
 
     def __init__(self, *args, **kwargs):
@@ -178,7 +149,6 @@ class AddTransactionWindow(qtw.QWidget):
 
         self.ui = Ui_AddTransaction()
         self.ui.setupUi(self)
-
 
 if __name__ == '__main__':
     app = qtw.QApplication([])
@@ -191,7 +161,6 @@ if __name__ == '__main__':
     addtransactionwidget = AddTransactionWindow()
     grocerymainwidget = GrocerymainWindow()
     groceryitemwidget = GroceryitemWindow()
-
 
     app.exec_()
 
