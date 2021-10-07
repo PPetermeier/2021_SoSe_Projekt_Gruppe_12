@@ -4,6 +4,8 @@ from budgetplanerframe import Ui_Budgetplaner
 from newtransactionframe import Ui_AddTransaction
 from groceryitemframe import Ui_Groceryitemframe
 from grocerymainframe import Ui_Grocerymainframe
+import os
+from pathlib import Path
 
 
 from PyQt5 import QtWidgets as qtw
@@ -34,6 +36,11 @@ class LoginWindow(qtw.QWidget):
 
         if username == 'admin' and password == 'admin':
             qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
+            username_verification = 'admin'
+            filepath = "../JSON/{}.json".format(username_verification)
+            userjson = Path(filepath)
+            userjson.touch(exist_ok=True)
+            f = open(userjson)
             loginwidget.close()
             menuwidget.show()
         else:
@@ -48,6 +55,10 @@ class LoginWindow(qtw.QWidget):
                     for i in results:
                         qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
                         loginwidget.close()
+                        filepath = "../JSON/{}.json".format(username_verification.lower())
+                        userjson = Path(filepath)
+                        userjson.touch(exist_ok=True)
+                        jsonfile = open(userjson)
                         menuwidget.show()
                 else:
                     qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
