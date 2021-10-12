@@ -33,14 +33,18 @@ class LoginWindow(qtw.QWidget):
 
         username = self.ui.user_edit.text()
         password = self.ui.pass_edit.text()
-
-        if username == 'admin' and password == 'admin':
+        # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if username == 'admin' and (password == 'admin' or password == '') :
+        # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
             username_verification = 'admin'
-            filepath = "../JSON/{}.json".format(username_verification)
-            userjson = Path(filepath)
-            userjson.touch(exist_ok=True)
-            f = open(userjson)
+            filepath = "../JSON/{}_grocery.json".format(
+                username_verification.lower())  # Der Pfad der JSON Datei wird festgelegt /JSON/nutzername_grocery.json
+            usergroceryjson = Path(filepath)  # Der Pfad wird zu verändert, dass er zum Windows Dateisystem passt.
+            usergroceryjson.touch(exist_ok=True)  # falls die Datei nicht existiert, wird sie angelegt
+            filepath = "../JSON/{}_budget.json".format(username_verification.lower())
+            userbudgetjson = Path(filepath)
+            userbudgetjson.touch(exist_ok=True)
             loginwidget.close()
             menuwidget.show()
         else:
