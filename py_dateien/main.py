@@ -1,7 +1,7 @@
 from loginframe import Ui_Login
 from menuframe import Ui_Haushaltsplaner
 from budgetplanerframe import Ui_Budgetplaner
-from newtransactionframe import Ui_AddTransaction
+from newtransactionframe import Ui_Einkaufsplaner
 from groceryitemframe import Ui_Groceryitemframe
 from grocerymainframe import Ui_Grocerymainframe
 import shutil
