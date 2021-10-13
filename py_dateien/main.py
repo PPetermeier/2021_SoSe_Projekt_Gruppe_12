@@ -4,6 +4,7 @@ from budgetplanerframe import Ui_Budgetplaner
 from newtransactionframe import Ui_AddTransaction
 from groceryitemframe import Ui_Groceryitemframe
 from grocerymainframe import Ui_Grocerymainframe
+import shutil
 import os
 from pathlib import Path
 
@@ -36,16 +37,14 @@ class LoginWindow(qtw.QWidget):
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if username == 'admin' and (password == 'admin' or password == '') :
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
             username_verification = 'admin'
-            filepath = "../JSON/{}_grocery.json".format(
-                username_verification.lower())  # Der Pfad der JSON Datei wird festgelegt /JSON/nutzername_grocery.json
-            usergroceryjson = Path(filepath)  # Der Pfad wird zu verändert, dass er zum Windows Dateisystem passt.
-            usergroceryjson.touch(exist_ok=True)  # falls die Datei nicht existiert, wird sie angelegt
-            filepath = "../JSON/{}_budget.json".format(username_verification.lower())
-            userbudgetjson = Path(filepath)
-            userbudgetjson.touch(exist_ok=True)
+            qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
             loginwidget.close()
+            filepath = "../save_data/{}_grocery.yaml".format(username_verification.lower())
+            try:
+                f = open(filepath)
+            except IOError:
+                shutil.copy('../save_data/grocery_list_template.yaml', filepath)
             menuwidget.show()
         else:
             try:
@@ -59,10 +58,11 @@ class LoginWindow(qtw.QWidget):
                     for i in results:
                         qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
                         loginwidget.close()
-                        filepath = "../JSON/{}.json".format(username_verification.lower())
-                        userjson = Path(filepath)
-                        userjson.touch(exist_ok=True)
-                        jsonfile = open(userjson)
+                        filepath = "../save_data/{}_grocery.yaml".format(username_verification.lower())
+                        try:
+                            f = open(filepath)
+                        except IOError:
+                            shutil.copy('../save_data/grocery_list_template.yaml', filepath)
                         menuwidget.show()
                 else:
                     qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
