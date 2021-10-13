@@ -1,0 +1,59 @@
+{
+    "status": "ok",
+    "data": {
+        "language": "de-de",
+        "recipe": {
+            "id_recipe": 70,
+            "images": [],
+            "create": "2019-01-01 00:00:00",
+            "last_update": "2019-04-11 12:51:40",
+            "title": "Zitronenkuchen nach italienischer Art",
+            "subtitle": "",
+            "serving": 6,
+            "yield_quantity_1": 1,
+            "yield_quantity_2": "",
+            "yield_info": "Tarteform",
+            "difficulty": "mittel"
+        },
+        "ingredients": [
+            {
+                "part_number": 1,
+                "part_text": "F\u00fcr den Boden",
+                "product": "Butter",
+                "quantity1": 125,
+                "quantity2": "",
+                "item_attribute": "",
+                "item_addition": "",
+                "unit": "Gramm",
+                "unit_short": "g"
+            },
+            {
+                "part_number": 1,
+                "part_text": "F\u00fcr den Boden",
+                "product": "Eigelb",
+                "quantity1": 1,
+                "quantity2": "",
+                "item_attribute": "",
+                "item_addition": "",
+                "unit": "",
+                "unit_short": ""
+            },
+            {
+                "...": "and more"
+            }
+        ],
+        "steps": [
+            {
+                "step_number": "1",
+                "step_text": "Das Mehl mit Zucker auf die Arbeitsfl\u00e4che h\u00e4ufeln, mit Salz mischen und in die Mitte des Mehls eine Mulde dr\u00fccken. Die kalte Butter in kleine St\u00fccke schneiden, in die Mulde geben, das Eigelb in die Mitte geben, ca. 2-3 EL lauwarmes Wasser zugeben und s\u00e4mtliche Zutaten mit dem Messer gut durchhacken, so dass kleine Teigkr\u00fcmel entstehen."
+            },
+            {
+                "step_number": "2",
+                "step_text": "Mit den H\u00e4nden rasch zu einem Teig verkneten, zu einer Kugel formen, in Frischhaltefolie wickeln und ca. 30 Minuten im K\u00fchlschrank k\u00fchl stellen."
+            },
+            {
+                "...": "and more"
+            }
+        ]
+    }
+}
