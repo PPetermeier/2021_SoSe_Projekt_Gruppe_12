@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Einkaufsplaner(object):
+class Ui_AddTransaction(object):
     def setupUi(self, Einkaufsplaner):
         Einkaufsplaner.setObjectName("Einkaufsplaner")
         Einkaufsplaner.resize(510, 478)
@@ -169,7 +169,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Einkaufsplaner = QtWidgets.QWidget()
-    ui = Ui_Einkaufsplaner()
+    ui = Ui_AddTransaction()
     ui.setupUi(Einkaufsplaner)
     Einkaufsplaner.show()
     sys.exit(app.exec_())
