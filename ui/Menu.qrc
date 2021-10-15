@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="Images">
+    <file>italienischer-zitronenkuchen.jpg</file>
     <file>logo_small_icon_only_inverted.png</file>
     <file>calculator.jpg</file>
     <file>supermarket.jpg</file>
