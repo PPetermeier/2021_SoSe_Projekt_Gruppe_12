@@ -1,59 +1,271 @@
 {
-    "status": "ok",
-    "data": {
-        "language": "de-de",
-        "recipe": {
-            "id_recipe": 70,
-            "images": [],
-            "create": "2019-01-01 00:00:00",
-            "last_update": "2019-04-11 12:51:40",
-            "title": "Zitronenkuchen nach italienischer Art",
-            "subtitle": "",
-            "serving": 6,
-            "yield_quantity_1": 1,
-            "yield_quantity_2": "",
-            "yield_info": "Tarteform",
-            "difficulty": "mittel"
-        },
-        "ingredients": [
-            {
-                "part_number": 1,
-                "part_text": "F\u00fcr den Boden",
-                "product": "Butter",
-                "quantity1": 125,
-                "quantity2": "",
-                "item_attribute": "",
-                "item_addition": "",
-                "unit": "Gramm",
-                "unit_short": "g"
-            },
-            {
-                "part_number": 1,
-                "part_text": "F\u00fcr den Boden",
-                "product": "Eigelb",
-                "quantity1": 1,
-                "quantity2": "",
-                "item_attribute": "",
-                "item_addition": "",
-                "unit": "",
-                "unit_short": ""
-            },
-            {
-                "...": "and more"
-            }
-        ],
-        "steps": [
-            {
-                "step_number": "1",
-                "step_text": "Das Mehl mit Zucker auf die Arbeitsfl\u00e4che h\u00e4ufeln, mit Salz mischen und in die Mitte des Mehls eine Mulde dr\u00fccken. Die kalte Butter in kleine St\u00fccke schneiden, in die Mulde geben, das Eigelb in die Mitte geben, ca. 2-3 EL lauwarmes Wasser zugeben und s\u00e4mtliche Zutaten mit dem Messer gut durchhacken, so dass kleine Teigkr\u00fcmel entstehen."
-            },
-            {
-                "step_number": "2",
-                "step_text": "Mit den H\u00e4nden rasch zu einem Teig verkneten, zu einer Kugel formen, in Frischhaltefolie wickeln und ca. 30 Minuten im K\u00fchlschrank k\u00fchl stellen."
-            },
-            {
-                "...": "and more"
-            }
-        ]
-    }
+   "status":"ok",
+   "data":{
+      "language":"de-de",
+      "recipe":{
+         "id_recipe":70,
+         "images":[
+
+         ],
+         "create":"2019-01-01 00:00:00",
+         "last_update":"2019-04-11 12:51:40",
+         "title":"Zitronenkuchen nach italienischer Art",
+         "subtitle":"",
+         "serving":6,
+         "yield_quantity_1":1,
+         "yield_quantity_2":"",
+         "yield_info":"Tarteform",
+         "difficulty":"mittel"
+      },
+      "ingredients":[
+         {
+            "part_number":1,
+            "part_text":"F\u00fcr den Boden",
+            "product":"Butter",
+            "quantity1":125,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"Gramm",
+            "unit_short":"g"
+         },
+         {
+            "part_number":1,
+            "part_text":"F\u00fcr den Boden",
+            "product":"Eigelb",
+            "quantity1":1,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"",
+            "unit_short":""
+         },
+         {
+            "...":"and more"
+         }
+      ],
+      "steps":[
+         {
+            "step_number":"1",
+            "step_text":"Das Mehl mit Zucker auf die Arbeitsfl\u00e4che h\u00e4ufeln, mit Salz mischen und in die Mitte des Mehls eine Mulde dr\u00fccken. Die kalte Butter in kleine St\u00fccke schneiden, in die Mulde geben, das Eigelb in die Mitte geben, ca. 2-3 EL lauwarmes Wasser zugeben und s\u00e4mtliche Zutaten mit dem Messer gut durchhacken, so dass kleine Teigkr\u00fcmel entstehen."
+         },
+         {
+            "step_number":"2",
+            "step_text":"Mit den H\u00e4nden rasch zu einem Teig verkneten, zu einer Kugel formen, in Frischhaltefolie wickeln und ca. 30 Minuten im K\u00fchlschrank k\u00fchl stellen."
+         },
+         {
+            "...":"and more"
+         }
+      ]
+   },
+   "data2":{
+      "language":"de-de",
+      "recipe":{
+         "id_recipe":72,
+         "images":[
+
+         ],
+         "create":"2019-10-10 00:00:00",
+         "last_update":"2019-01-11 11:51:44",
+         "title":"Tagliatelle mit Gemüsestreifen und Avocado-Limettensoße ",
+         "subtitle":"",
+         "serving":6,
+         "yield_quantity_1":1,
+         "yield_quantity_2":"",
+         "yield_info":"Tarteform",
+         "difficulty":"mittel"
+      },
+      "ingredients":[
+         {
+            "part_number":1,
+            "part_text":"Für die Avocado-Limettensoße",
+            "product":"Zwiebeln",
+            "quantity1":80,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"Gramm",
+            "unit_short":"g"
+         },
+         {
+            "part_number":1,
+            "part_text":"Für die Avocado-Limettensoße",
+            "product":" Rapskernöl kaltgepresst, mild gedämpft ",
+            "quantity1":60,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"",
+            "unit_short":"ml"
+         },
+         {
+            "part_number":1,
+            "part_text":"Für die Avocado-Limettensoße",
+            "product":"Weißwein",
+            "quantity1":150,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"",
+            "unit_short":"ml"
+         },
+         {
+            "part_number":1,
+            "part_text":"Für die Avocado-Limettensoße",
+            "product":"Cashewnüsse",
+            "quantity1":40,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"",
+            "unit_short":"g"
+         },
+         {
+            "part_number":1,
+            "part_text":"Für die Avocado-Limettensoße",
+            "product":"Gemüsebrühe",
+            "quantity1":400,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"",
+            "unit_short":"ml"
+         },
+         {
+            "part_number":1,
+            "part_text":"Für die Avocado-Limettensoße",
+            "product":"Avocado",
+            "quantity1":150,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"",
+            "unit_short":"g"
+         },
+         {
+            "part_number":1,
+            "part_text":"Für die Avocado-Limettensoße",
+            "product":"Limettensaft",
+            "quantity1":40,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"",
+            "unit_short":"ml"
+         },
+         {
+            "part_number":1,
+            "part_text":"Für die Avocado-Limettensoße",
+            "product":"Sojasahne",
+            "quantity1":40,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"",
+            "unit_short":"ml"
+         },
+         {
+            "part_number":1,
+            "part_text":"F\u00fcr die Gem\u00fcsestreifen",
+            "product":"Karotten",
+            "quantity1":200,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"Gramm",
+            "unit_short":"g"
+         },
+         {
+            "part_number":1,
+            "part_text":"F\u00fcr die Gem\u00fcsestreifen",
+            "product":"Zucchini",
+            "quantity1":200,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"Gramm",
+            "unit_short":"g"
+         },
+         {
+            "part_number":1,
+            "part_text":"F\u00fcr die Gem\u00fcsestreifen",
+            "product":"Petersilienwurzel",
+            "quantity1":100,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"Gramm",
+            "unit_short":"g"
+         },
+         {
+            "part_number":1,
+            "part_text":"F\u00fcr die Gem\u00fcsestreifen",
+            "product":"gr\u00fcne Erbsenschoten",
+            "quantity1":100,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"Gramm",
+            "unit_short":"g"
+         },
+         {
+            "part_number":1,
+            "part_text":"F\u00fcr die Gem\u00fcsestreifen",
+            "product":"Rapskernöl nativ, kaltgepresst",
+            "quantity1":50,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"Milliliter",
+            "unit_short":"ml"
+         },
+         {
+            "part_number":1,
+            "part_text":"F\u00fcr die Tagliatelle",
+            "product":"Wasser",
+            "quantity1":8,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"Liter",
+            "unit_short":"l"
+         },
+         {
+            "part_number":1,
+            "part_text":"F\u00fcr die Tagliatelle",
+            "product":"Tagliatelle ohne Ei",
+            "quantity1":800,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"Gramm",
+            "unit_short":"g"
+         },
+         {
+            "part_number":1,
+            "part_text":"F\u00fcr die Tagliatelle",
+            "product":"Pekannüsse grob gerieben",
+            "quantity1":100,
+            "quantity2":"",
+            "item_attribute":"",
+            "item_addition":"",
+            "unit":"Gramm",
+            "unit_short":"g"
+         }
+      ],
+      "steps":[
+         {
+            "step_number":"1",
+            "step_text":"Die Zwiebeln in feine Würfel schneiden. Das Öl in einem großen Topf erhitzen, die Zwiebeln darin glasig dünsten. Das Ganze mit dem Weißwein aufgießen und die Cashewnüsse dazugeben. Die Soße kurz einkochen lassen. Danach mit der Gemüsebrühe auffüllen und 5 Minuten kochen lassen. Das Fruchtfleisch der Avocado aus der Schale lösen und sofort mit dem Limettensaft vermengen. Die Avocado, die Sojasahne und die vorbereitete Basissoße in einem Mixer oder mit einem leistungsstarken Pürierstab cremig mixen, anschließend mit Salz, Pfeffer und Kurkuma nach Belieben abschmecken."
+         },
+         {
+            "step_number":"2",
+            "step_text":"Die Karotten, die Zucchini, die Petersilienwurzel und die grünen Erbsenschoten in Streifen schneiden, mit dem Öl vermengen und leicht salzen. Die Gemüsestreifen in einer Pfanne leicht andämpfen, sodass sie noch Biss haben."
+         },
+         {
+            "step_number":"3",
+            "step_text":"Das Wasser in einem Topf aufkochen und salzen. Die Tagliatelle dazugeben und nach Packungsangabe garen. Die Tagliatelle mit den Gemüsestreifen und der Avocado-Limettensoße vermengen und auf den Tellern anrichten. Die grob geriebenen Pekannüsse vor dem Servieren auf die Tagliatelle streuen."
+         }
+      ]
+   }
 }
