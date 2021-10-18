@@ -41,11 +41,18 @@ class LoginWindow(qtw.QWidget):
             qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
             loginwidget.close()
             filepath = "../save_data/{}_grocery.yaml".format(username_verification.lower())
+            filepathgrocery = "../save_data/{}_grocery.yaml".format(username_verification.lower())
             try:
                 f = open(filepath)
             except IOError:
                 shutil.copy('../save_data/grocery_list_template.yaml', filepath)
+            try:
+                f = open(filepathgrocery)
+            except IOError:
+                shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
             menuwidget.show()
+
+
         else:
             try:
                 cursordb = cnx.cursor()
@@ -59,10 +66,15 @@ class LoginWindow(qtw.QWidget):
                         qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
                         loginwidget.close()
                         filepath = "../save_data/{}_grocery.yaml".format(username_verification.lower())
+                        filepathgrocery = "../save_data/{}_budget.yaml".format(username_verification.lower())
                         try:
                             f = open(filepath)
                         except IOError:
                             shutil.copy('../save_data/grocery_list_template.yaml', filepath)
+                        try:
+                            f = open(filepathgrocery)
+                        except IOError:
+                            shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
                         menuwidget.show()
                 else:
                     qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
