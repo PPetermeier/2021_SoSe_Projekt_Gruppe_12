@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Einkaufsplaner(object):
-    def setupUi(self, Einkaufsplaner):
-        Einkaufsplaner.setObjectName("Einkaufsplaner")
-        Einkaufsplaner.resize(510, 564)
-        self.horizontalLayoutWidget = QtWidgets.QWidget(Einkaufsplaner)
+class Ui_RecipeWindow(object):
+    def setupUi(self, Rezepte):
+        Rezepte.setObjectName("Rezepte")
+        Rezepte.resize(510, 564)
+        self.horizontalLayoutWidget = QtWidgets.QWidget(Rezepte)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(30, 40, 451, 80))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
@@ -33,12 +33,10 @@ class Ui_Einkaufsplaner(object):
         self.l_icon.setText("")
         self.l_icon.setObjectName("l_icon")
         self.horizontalLayout_4.addWidget(self.l_icon)
-        self.t_recipelist = QtWidgets.QTableWidget(Einkaufsplaner)
+        self.t_recipelist = QtWidgets.QListWidget(Rezepte)
         self.t_recipelist.setGeometry(QtCore.QRect(30, 140, 451, 271))
         self.t_recipelist.setObjectName("t_recipelist")
-        self.t_recipelist.setColumnCount(0)
-        self.t_recipelist.setRowCount(0)
-        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(Einkaufsplaner)
+        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(Rezepte)
         self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(30, 440, 451, 80))
         self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
@@ -55,23 +53,23 @@ class Ui_Einkaufsplaner(object):
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
 
-        self.retranslateUi(Einkaufsplaner)
-        QtCore.QMetaObject.connectSlotsByName(Einkaufsplaner)
+        self.retranslateUi(Rezepte)
+        QtCore.QMetaObject.connectSlotsByName(Rezepte)
 
-    def retranslateUi(self, Einkaufsplaner):
+    def retranslateUi(self, Rezepte):
         _translate = QtCore.QCoreApplication.translate
-        Einkaufsplaner.setWindowTitle(_translate("Einkaufsplaner", "Haushaltsplaner"))
-        self.l_app.setText(_translate("Einkaufsplaner", "Rezepte"))
-        self.b_back.setText(_translate("Einkaufsplaner", "Zurück"))
-        self.b_recipeview.setText(_translate("Einkaufsplaner", "Rezept ansehen"))
+        Rezepte.setWindowTitle(_translate("Rezepte", "Rezepte"))
+        self.l_app.setText(_translate("Rezepte", "Rezepte"))
+        self.b_back.setText(_translate("Rezepte", "Zurück"))
+        self.b_recipeview.setText(_translate("Rezepte", "Rezept ansehen"))
 import menu_rc
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Einkaufsplaner = QtWidgets.QWidget()
-    ui = Ui_Einkaufsplaner()
-    ui.setupUi(Einkaufsplaner)
-    Einkaufsplaner.show()
+    Rezepte = QtWidgets.QWidget()
+    ui = Ui_RecipeWindow()
+    ui.setupUi(Rezepte)
+    Rezepte.show()
     sys.exit(app.exec_())

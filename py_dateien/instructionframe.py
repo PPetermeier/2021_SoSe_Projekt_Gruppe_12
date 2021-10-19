@@ -41,13 +41,22 @@ class Ui_Rezeptanleitung(object):
         self.t_incredientlist = QtWidgets.QTableWidget(Rezeptanleitung)
         self.t_incredientlist.setGeometry(QtCore.QRect(40, 370, 371, 211))
         self.t_incredientlist.setObjectName("t_incredientlist")
-        self.t_incredientlist.setColumnCount(0)
-        self.t_incredientlist.setRowCount(0)
-        self.list_instructions = QtWidgets.QListView(Rezeptanleitung)
+        self.t_incredientlist.setColumnCount(2)
+
+        header = self.t_incredientlist.horizontalHeader()
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+        header.hide()
+        self.t_incredientlist.verticalHeader().hide()
+
+        self.list_instructions = QtWidgets.QListWidget(Rezeptanleitung)
         self.list_instructions.setGeometry(QtCore.QRect(440, 140, 411, 441))
         self.list_instructions.setObjectName("list_instructions")
+
+        self.list_instructions.setWordWrap(True)
+
         self.l_recipeimage = QtWidgets.QLabel(Rezeptanleitung)
-        self.l_recipeimage.setGeometry(QtCore.QRect(40, 140, 371, 211))
+        self.l_recipeimage.setGeometry(QtCore.QRect(30, 140, 371, 211))
         self.l_recipeimage.setAutoFillBackground(False)
         self.l_recipeimage.setStyleSheet("\n"
 "image: url(:/Images/italienischer-zitronenkuchen.jpg);")
@@ -89,8 +98,8 @@ class Ui_Rezeptanleitung(object):
     def retranslateUi(self, Rezeptanleitung):
         _translate = QtCore.QCoreApplication.translate
         Rezeptanleitung.setWindowTitle(_translate("Rezeptanleitung", "Haushaltsplaner"))
-        self.b_back.setText(_translate("Rezeptanleitung", "Zurück"))
         self.l_recipe.setText(_translate("Rezeptanleitung", "\"Rezeptname\""))
+        self.b_back.setText(_translate("Rezeptanleitung", "Zurück"))
         self.b_addrecipe.setText(_translate("Rezeptanleitung", "Hinzufügen"))
 import menu_rc
 

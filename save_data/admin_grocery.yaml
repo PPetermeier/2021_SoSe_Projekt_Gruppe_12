@@ -1,12 +1,15 @@
 Tante Emmas Geburtstag:
 - amount: 3 Kg
   category: Lidl
-  item: Torte
+  item: Birne
+- amount: 1 Stueck
+  category: Metzgerei
+  item: Steak
 - amount: 1 Stueck
   category: Metzgerei
   item: Steak
 - amount: 1 Dutzend
-  category: Metzgerei
+  category: Rewe
   item: Eier
 Wocheneinkauf:
 - amount: 1 Kg
@@ -15,3 +18,6 @@ Wocheneinkauf:
 - amount: 10 Kg
   category: Aldi
   item: Schitzel
+- amount: einen kleinen
+  category: THM
+  item: Marat

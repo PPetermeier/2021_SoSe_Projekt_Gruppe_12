@@ -4,20 +4,37 @@ from budgetplanerframe import Ui_Budgetplaner
 from newtransactionframe import Ui_AddTransaction
 from groceryitemframe import Ui_Groceryitemframe
 from grocerymainframe import Ui_Grocerymainframe
+from recipeframe import Ui_RecipeWindow
+from instructionframe import Ui_Rezeptanleitung
 import shutil
 import os
 from pathlib import Path
 
-
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
 import mysql.connector
+
+import Logic
 
 cnx = mysql.connector.connect(user="hproot@hplogin",
                               password="<Y#T<>1Ug`/q",
                               host="hplogin.mysql.database.azure.com",
                               port=3306,
                               database="hpdb");
+
+
+
+filepath = "../save_data/admin_grocery.yaml"
+
+# Controller initialisiert und die funktion einkaufslisten aufgerufen
+
+
+Kontro = Logic.Controller()
+
+instructionswidget = None
+recipewidget = None
+
+
 
 class LoginWindow(qtw.QWidget):
 
@@ -35,8 +52,8 @@ class LoginWindow(qtw.QWidget):
         username = self.ui.user_edit.text()
         password = self.ui.pass_edit.text()
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if username == 'admin' and (password == 'admin' or password == '') :
-        # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if username == 'admin' and (password == 'admin' or password == ''):
+            # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             username_verification = 'admin'
             qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
             loginwidget.close()
@@ -50,6 +67,8 @@ class LoginWindow(qtw.QWidget):
                 f = open(filepathgrocery)
             except IOError:
                 shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
+
+            #menuwidget = MenuWindow()
             menuwidget.show()
 
 
@@ -75,6 +94,8 @@ class LoginWindow(qtw.QWidget):
                             f = open(filepathgrocery)
                         except IOError:
                             shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
+
+                        #menuwidget = MenuWindow()
                         menuwidget.show()
                 else:
                     qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
@@ -98,7 +119,8 @@ class LoginWindow(qtw.QWidget):
                 cnx.commit()
                 qtw.QMessageBox.information(self, 'Erfolgreich Registriert', 'Ihr Account wurde erstellt.')
         except Exception as err:
-                qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
+            qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
+
 
 class MenuWindow(qtw.QWidget):
 
@@ -112,16 +134,20 @@ class MenuWindow(qtw.QWidget):
         self.ui.b_budget.clicked.connect(self.openbudget)
 
     def opengrocery(self):
-        menuwidget.close()
-        grocerymainwidget.show()
+        # Controller schließt Fenster
+        Kontro.fenster_zu(self)
+
+        # Controller öffnet fenster
+        Kontro.einkaufslisten(filepath, grocerymainwidget)
 
     def openbudget(self):
-        menuwidget.close()
-        budgetplanerwidget.show()
+        Kontro.fenster_zu(self)
+        Kontro.fenster_auf(budgetplanerwidget)
 
     def logout(self):
-        menuwidget.close()
-        loginwidget.show()
+        Kontro.fenster_zu(self)
+        Kontro.fenster_auf(loginwidget)
+
 
 class GrocerymainWindow(qtw.QWidget):
 
@@ -132,13 +158,29 @@ class GrocerymainWindow(qtw.QWidget):
         self.ui.setupUi(self)
         self.ui.b_back.clicked.connect(self.back)
         self.ui.b_newlist.clicked.connect(self.newList)
+        self.ui.b_openlist.clicked.connect(self.open_list)
+        self.ui.b_recipe.clicked.connect(self.open_recipes)
 
     def back(self):
-        grocerymainwidget.close()
-        menuwidget.show()
+        Kontro.fenster_zu(self)
+        Kontro.fenster_auf(menuwidget)
+
     def newList(self):
-        grocerymainwidget.close()
-        groceryitemwidget.show()
+        Kontro.fenster_zu(self)
+        Kontro.fenster_auf(groceryitemwidget)
+
+    def open_list(self):
+        Kontro.fenster_zu(self)
+
+        selected = self.ui.listofflist.currentItem().text()
+
+        print("liste geöffnet")
+        Kontro.liste_auf(groceryitemwidget, filepath, selected)
+
+    def open_recipes(self):
+        Kontro.fenster_zu(self)
+        Kontro.rezepte_auf(recipewidget)
+
 
 class GroceryitemWindow(qtw.QWidget):
 
@@ -148,10 +190,15 @@ class GroceryitemWindow(qtw.QWidget):
         self.ui = Ui_Groceryitemframe()
         self.ui.setupUi(self)
         self.ui.b_back.clicked.connect(self.back)
+        self.ui.b_add.clicked.connect(self.add)
 
     def back(self):
-        groceryitemwidget.close()
-        grocerymainwidget.show()
+        Kontro.fenster_zu(self)
+        Kontro.fenster_auf(grocerymainwidget)
+
+    def add(self):
+        Kontro.artikel_hinzufuegen(self, filepath)
+
 
 class BudgetplanerMainWindow(qtw.QWidget):
 
@@ -164,10 +211,13 @@ class BudgetplanerMainWindow(qtw.QWidget):
         self.ui.b_addtransaction.clicked.connect(self.addTransaction)
 
     def back(self):
-        budgetplanerwidget.close()
-        menuwidget.show()
+        Kontro.fenster_zu(self)
+
+        Kontro.fenster_auf(menuwidget)
+
     def addTransaction(self):
         addtransactionwidget.show()
+
 
 class AddTransactionWindow(qtw.QWidget):
 
@@ -177,17 +227,95 @@ class AddTransactionWindow(qtw.QWidget):
         self.ui = Ui_AddTransaction()
         self.ui.setupUi(self)
 
+
+class RecipeWindow(qtw.QWidget):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.ui = Ui_RecipeWindow()
+        self.ui.setupUi(self)
+        self.ui.b_recipeview.clicked.connect(self.open_recipe)
+
+    def open_recipe(self):
+        Kontro.fenster_zu(self)
+
+        selected = self.ui.t_recipelist.currentItem().text()
+
+        print("rezept geöffnet")
+        Kontro.rezept_anzeige(instructionswidget, filepath, selected)
+
+
+class AnleitungsWindow(qtw.QWidget):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.ui = Ui_Rezeptanleitung()
+        self.ui.setupUi(self)
+
+        self.ui.b_addrecipe.clicked.connect(self.zutaten_hinzufuegen)
+        self.ui.b_back.clicked.connect(self.back)
+
+    def back(self):
+        Kontro.fenster_zu(self)
+        Kontro.fenster_auf(recipewidget)
+
+    def zutaten_hinzufuegen(self):
+
+        liste = self.ui.d_list.currentText()
+
+        zutaten = []
+
+        print(liste)
+
+        for reihe in range(self.ui.t_incredientlist.rowCount()):
+            item = self.ui.t_incredientlist.item(reihe, 0)
+
+            #print(item.text())
+
+            if item.checkState():
+                zutat = [str(self.ui.t_incredientlist.item(reihe, 0).text()) , str(self.ui.t_incredientlist.item(reihe, 1).text())]
+
+                zutaten.append(zutat)
+
+
+        print(zutaten)
+
+
+        Kontro.zutaten_zu_einkaufsliste(liste, zutaten)
+
+
 if __name__ == '__main__':
+
     app = qtw.QApplication([])
 
     loginwidget = LoginWindow()
-    loginwidget.show()
+
+    Kontro.fenster_auf(loginwidget)
+
+    #menuwidget = 'None'
 
     menuwidget = MenuWindow()
     budgetplanerwidget = BudgetplanerMainWindow()
     addtransactionwidget = AddTransactionWindow()
     grocerymainwidget = GrocerymainWindow()
     groceryitemwidget = GroceryitemWindow()
+    recipewidget = RecipeWindow()
+    instructionswidget = AnleitungsWindow()
+
+    #
+    # loginwidget2 = LoginWindow()
+    # menuwidget2 = MenuWindow()
+    #
+    # win = qtw.QStackedWidget()
+    # win.addWidget(loginwidget2)
+    # win.addWidget(menuwidget2)
+    #
+    # loginwidget2.ui.login_button.clicked.connect(lambda: win.setCurrentIndex(1))
+    # win.resize(1200,1200)
+    # win.show()
+
+
 
     app.exec_()
-

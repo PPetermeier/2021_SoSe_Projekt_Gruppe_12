@@ -1,13 +1,13 @@
 Tante Emmas Geburtstag:
 - amount: 3 Kg
   category: Lidl
-  item: Torte
+  item: Birne
 - amount: 1 Stueck
   category: Metzgerei
   item: Steak
-- amount: 1 Dutzend
+- amount: 1 Stueck
   category: Metzgerei
-  item: Eier
+  item: Steak
 Wocheneinkauf:
 - amount: 1 Kg
   category: Tegut

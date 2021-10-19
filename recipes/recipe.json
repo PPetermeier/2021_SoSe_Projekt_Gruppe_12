@@ -67,7 +67,7 @@
          ],
          "create":"2019-10-10 00:00:00",
          "last_update":"2019-01-11 11:51:44",
-         "title":"Tagliatelle mit Gemüsestreifen und Avocado-Limettensoße ",
+         "title":"Tagliatelle mit Gem\u00fcsestreifen und Avocado-Limettenso\u00dfe",
          "subtitle":"",
          "serving":6,
          "yield_quantity_1":1,
@@ -78,7 +78,7 @@
       "ingredients":[
          {
             "part_number":1,
-            "part_text":"Für die Avocado-Limettensoße",
+            "part_text":"F\u00fcr die Avocado-Limettenso\u00dfe",
             "product":"Zwiebeln",
             "quantity1":80,
             "quantity2":"",
@@ -89,8 +89,8 @@
          },
          {
             "part_number":1,
-            "part_text":"Für die Avocado-Limettensoße",
-            "product":" Rapskernöl kaltgepresst, mild gedämpft ",
+            "part_text":"F\u00fcr die Avocado-Limettenso\u00dfe",
+            "product":" Rapskernöl kaltgepresst, mild ged\u00e4mpft ",
             "quantity1":60,
             "quantity2":"",
             "item_attribute":"",
@@ -100,8 +100,8 @@
          },
          {
             "part_number":1,
-            "part_text":"Für die Avocado-Limettensoße",
-            "product":"Weißwein",
+            "part_text":"F\u00fcr die Avocado-Limettenso\u00dfe",
+            "product":"Wei\u00dfwein",
             "quantity1":150,
             "quantity2":"",
             "item_attribute":"",
@@ -111,8 +111,8 @@
          },
          {
             "part_number":1,
-            "part_text":"Für die Avocado-Limettensoße",
-            "product":"Cashewnüsse",
+            "part_text":"F\u00fcr die Avocado-Limettenso\u00dfe",
+            "product":"Cashewn\u00fcsse",
             "quantity1":40,
             "quantity2":"",
             "item_attribute":"",
@@ -122,8 +122,8 @@
          },
          {
             "part_number":1,
-            "part_text":"Für die Avocado-Limettensoße",
-            "product":"Gemüsebrühe",
+            "part_text":"F\u00fcr die Avocado-Limettenso\u00dfe",
+            "product":"Gem\u00fcsebr\u00fche",
             "quantity1":400,
             "quantity2":"",
             "item_attribute":"",
@@ -133,7 +133,7 @@
          },
          {
             "part_number":1,
-            "part_text":"Für die Avocado-Limettensoße",
+            "part_text":"F\u00fcr die Avocado-Limettenso\u00dfe",
             "product":"Avocado",
             "quantity1":150,
             "quantity2":"",
@@ -144,7 +144,7 @@
          },
          {
             "part_number":1,
-            "part_text":"Für die Avocado-Limettensoße",
+            "part_text":"F\u00fcr die Avocado-Limettenso\u00dfe",
             "product":"Limettensaft",
             "quantity1":40,
             "quantity2":"",
@@ -155,7 +155,7 @@
          },
          {
             "part_number":1,
-            "part_text":"Für die Avocado-Limettensoße",
+            "part_text":"F\u00fcr die Avocado-Limettenso\u00dfe",
             "product":"Sojasahne",
             "quantity1":40,
             "quantity2":"",
@@ -244,7 +244,7 @@
          {
             "part_number":1,
             "part_text":"F\u00fcr die Tagliatelle",
-            "product":"Pekannüsse grob gerieben",
+            "product":"Pekann\u00fcsse grob gerieben",
             "quantity1":100,
             "quantity2":"",
             "item_attribute":"",
@@ -256,15 +256,15 @@
       "steps":[
          {
             "step_number":"1",
-            "step_text":"Die Zwiebeln in feine Würfel schneiden. Das Öl in einem großen Topf erhitzen, die Zwiebeln darin glasig dünsten. Das Ganze mit dem Weißwein aufgießen und die Cashewnüsse dazugeben. Die Soße kurz einkochen lassen. Danach mit der Gemüsebrühe auffüllen und 5 Minuten kochen lassen. Das Fruchtfleisch der Avocado aus der Schale lösen und sofort mit dem Limettensaft vermengen. Die Avocado, die Sojasahne und die vorbereitete Basissoße in einem Mixer oder mit einem leistungsstarken Pürierstab cremig mixen, anschließend mit Salz, Pfeffer und Kurkuma nach Belieben abschmecken."
+            "step_text":"Die Zwiebeln in feine W\u00fcrfel schneiden. Das Öl in einem gro\u00dfen Topf erhitzen, die Zwiebeln darin glasig d\u00fcnsten. Das Ganze mit dem Wei\u00dfwein aufgie\u00dfen und die Cashewn\u00fcsse dazugeben. Die So\u00dfe kurz einkochen lassen. Danach mit der Gem\u00fcsebr\u00fche auff\u00fcllen und 5 Minuten kochen lassen. Das Fruchtfleisch der Avocado aus der Schale lösen und sofort mit dem Limettensaft vermengen. Die Avocado, die Sojasahne und die vorbereitete Basisso\u00dfe in einem Mixer oder mit einem leistungsstarken P\u00fcrierstab cremig mixen, anschlie\u00dfend mit Salz, Pfeffer und Kurkuma nach Belieben abschmecken."
          },
          {
             "step_number":"2",
-            "step_text":"Die Karotten, die Zucchini, die Petersilienwurzel und die grünen Erbsenschoten in Streifen schneiden, mit dem Öl vermengen und leicht salzen. Die Gemüsestreifen in einer Pfanne leicht andämpfen, sodass sie noch Biss haben."
+            "step_text":"Die Karotten, die Zucchini, die Petersilienwurzel und die gr\u00fcnen Erbsenschoten in Streifen schneiden, mit dem Öl vermengen und leicht salzen. Die Gem\u00fcsestreifen in einer Pfanne leicht and\u00e4mpfen, sodass sie noch Biss haben."
          },
          {
             "step_number":"3",
-            "step_text":"Das Wasser in einem Topf aufkochen und salzen. Die Tagliatelle dazugeben und nach Packungsangabe garen. Die Tagliatelle mit den Gemüsestreifen und der Avocado-Limettensoße vermengen und auf den Tellern anrichten. Die grob geriebenen Pekannüsse vor dem Servieren auf die Tagliatelle streuen."
+            "step_text":"Das Wasser in einem Topf aufkochen und salzen. Die Tagliatelle dazugeben und nach Packungsangabe garen. Die Tagliatelle mit den Gem\u00fcsestreifen und der Avocado-Limettenso\u00dfe vermengen und auf den Tellern anrichten. Die grob geriebenen Pekann\u00fcsse vor dem Servieren auf die Tagliatelle streuen."
          }
       ]
    }
