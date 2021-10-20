@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Rezeptanleitung(object):
     def setupUi(self, Rezeptanleitung):
         Rezeptanleitung.setObjectName("Rezeptanleitung")
-        Rezeptanleitung.resize(887, 678)
+        Rezeptanleitung.resize(887, 721)
         self.horizontalLayoutWidget = QtWidgets.QWidget(Rezeptanleitung)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(40, 40, 811, 80))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
@@ -66,7 +66,7 @@ class Ui_Rezeptanleitung(object):
         self.l_recipeimage.setWordWrap(False)
         self.l_recipeimage.setObjectName("l_recipeimage")
         self.gridLayoutWidget_2 = QtWidgets.QWidget(Rezeptanleitung)
-        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(40, 580, 371, 80))
+        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(40, 580, 371, 61))
         self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -79,7 +79,7 @@ class Ui_Rezeptanleitung(object):
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout_2.addItem(spacerItem3, 0, 0, 1, 1)
         self.horizontalLayoutWidget_2 = QtWidgets.QWidget(Rezeptanleitung)
-        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(440, 580, 411, 78))
+        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(40, 640, 371, 41))
         self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
