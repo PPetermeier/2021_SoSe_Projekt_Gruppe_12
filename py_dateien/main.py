@@ -236,6 +236,10 @@ class RecipeWindow(qtw.QWidget):
         self.ui = Ui_RecipeWindow()
         self.ui.setupUi(self)
         self.ui.b_recipeview.clicked.connect(self.open_recipe)
+        self.ui.b_back.clicked.connect(self.back)
+
+    def back(self):
+        pass
 
     def open_recipe(self):
         Kontro.fenster_zu(self)

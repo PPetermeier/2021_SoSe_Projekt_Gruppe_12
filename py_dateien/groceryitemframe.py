@@ -117,6 +117,8 @@ class Ui_Groceryitemframe(object):
         header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         # Labels der Tabelle
         self.listofflist.setHorizontalHeaderLabels(["Menge", "Artikel", "Kategorie"])
+        self.listofflist.verticalHeader().hide()
+
 
 
 
@@ -168,14 +170,6 @@ class Ui_Groceryitemframe(object):
         self.b_archive.setText(_translate("Einkaufsplaner", "Archivieren"))
         self.l_app.setText(_translate("Einkaufsplaner", "Einkaufsplaner"))
         self.b_rename.setText(_translate("Einkaufsplaner", "umbenennen"))
-
-        # wird nicht mehr benötigt
-
-        # self.l_mount.setText(_translate("Einkaufsplaner", "Menge"))
-        # self.l_article.setText(_translate("Einkaufsplaner", "Artikel"))
-        # self.l_categorie.setText(_translate("Einkaufsplaner", "Kategorie"))
-
-
         self.b_add.setText(_translate("Einkaufsplaner", "+"))
         self.b_itemdelete.setText(_translate("Einkaufsplaner", "Element löschen"))
 import menu_rc

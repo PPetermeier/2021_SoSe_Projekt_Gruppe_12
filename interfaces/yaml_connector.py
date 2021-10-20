@@ -17,6 +17,7 @@ def listenelemente(path):
     try:
         with open(path) as fh:
             data = yaml.safe_load(fh)
+            print(data)
         return data
     except (RuntimeError, TypeError, NameError):
         pass

@@ -21,6 +21,8 @@ class Controller:
 
         angezeigteListe = fenster.ui.listofflist
 
+        angezeigteListe.clear()
+
         for x in yc.einkaeufe(filepath):
             print(x)
             item = qtw.QListWidgetItem(x)
@@ -45,7 +47,12 @@ class Controller:
         angezeigteListe = neues_Fenster.ui.listofflist
         angezeigteListe.setRowCount(0)
 
+        print("bis hier")
+
         for x in yc.listenelemente(filepath)[liste]:
+
+            if 'archiviert' in x:
+                continue
 
             zeile = angezeigteListe.rowCount()
 
