@@ -1,4 +1,5 @@
 Tante Emmas Geburtstag:
+- archiviert: false
 - amount: 3 Kg
   category: Lidl
   item: Birne
@@ -9,6 +10,7 @@ Tante Emmas Geburtstag:
   category: Metzgerei
   item: Steak
 Wocheneinkauf:
+- archiviert: false
 - amount: 1 Kg
   category: Tegut
   item: Birne
