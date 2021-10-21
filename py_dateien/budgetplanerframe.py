@@ -9,6 +9,10 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import datetime
+
+monate = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November",
+          "Dezember"]
 
 
 class Ui_Budgetplaner(object):
@@ -135,10 +139,20 @@ class Ui_Budgetplaner(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         spacerItem15 = QtWidgets.QSpacerItem(80, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem15)
-        self.listofftransaction = QtWidgets.QListWidget(self.horizontalLayoutWidget_3)
+
+
+        self.listofftransaction = QtWidgets.QTableWidget(self.horizontalLayoutWidget_3)
         self.listofftransaction.setStyleSheet("font-size:12pt;")
         self.listofftransaction.setObjectName("listofftransaction")
         self.horizontalLayout_2.addWidget(self.listofftransaction)
+
+        self.listofftransaction.setColumnCount(3)
+        self.listofftransaction.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.listofftransaction.verticalHeader().hide()
+        self.listofftransaction.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.listofftransaction.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
+
+
         spacerItem16 = QtWidgets.QSpacerItem(80, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem16)
 
@@ -154,7 +168,7 @@ class Ui_Budgetplaner(object):
         self.pushButton_4.setText(_translate("Form", "Monat"))
         self.b_year.setText(_translate("Form", "Jahr"))
         self.b_previous.setText(_translate("Form", "<--"))
-        self.l_date.setText(_translate("Form", "Monat"))
+        self.l_date.setText(_translate("Form", monate[datetime.datetime.now().month -1] + str(2021)))
         self.b_next.setText(_translate("Form", "-->"))
         self.l_d.setText(_translate("Form", "Datum"))
         self.l_s.setText(_translate("Form", "Summe"))

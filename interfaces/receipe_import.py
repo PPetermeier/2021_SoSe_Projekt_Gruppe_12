@@ -39,6 +39,7 @@ def readreceipe(rezept = ''):
                 except:
                     print("hier war wieder das and more")
 
+    #print(zutaten, schritte)
     return zutaten, schritte
 
 def get_all_receipes():

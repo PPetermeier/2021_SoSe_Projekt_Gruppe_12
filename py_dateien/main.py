@@ -23,16 +23,17 @@ cnx = mysql.connector.connect(user="hproot@hplogin",
                               database="hpdb");
 
 
-
+##ES WIRD IMMER DIE ADMIN GROCERY ANGEZEIGT
 filepath = "../save_data/admin_grocery.yaml"
+filepathgrocery = "../save_data/admin_budget.yaml"
 
 # Controller initialisiert und die funktion einkaufslisten aufgerufen
-
-
 Kontro = Logic.Controller()
+GroKontro = Logic.BudgetController()
 
 instructionswidget = None
 recipewidget = None
+grocerymainwidget = None
 
 
 
@@ -138,11 +139,11 @@ class MenuWindow(qtw.QWidget):
         Kontro.fenster_zu(self)
 
         # Controller öffnet fenster
-        Kontro.einkaufslisten(filepath, grocerymainwidget)
+        Kontro.einkaufslisten(filepath, grocerymainwidget, False)
 
     def openbudget(self):
         Kontro.fenster_zu(self)
-        Kontro.fenster_auf(budgetplanerwidget)
+        GroKontro.budget_auf(budgetplanerwidget, filepathgrocery)
 
     def logout(self):
         Kontro.fenster_zu(self)
@@ -160,6 +161,11 @@ class GrocerymainWindow(qtw.QWidget):
         self.ui.b_newlist.clicked.connect(self.newList)
         self.ui.b_openlist.clicked.connect(self.open_list)
         self.ui.b_recipe.clicked.connect(self.open_recipes)
+        self.ui.b_delete.clicked.connect(self.delete_list)
+
+    def delete_list(self):
+        selected = self.ui.listofflist.currentRow()
+        Kontro.einkaufsliste_loeschen(self, selected)
 
     def back(self):
         Kontro.fenster_zu(self)
@@ -209,14 +215,41 @@ class BudgetplanerMainWindow(qtw.QWidget):
         self.ui.setupUi(self)
         self.ui.b_back.clicked.connect(self.back)
         self.ui.b_addtransaction.clicked.connect(self.addTransaction)
+        self.ui.b_next.clicked.connect(self.next)
+        self.ui.b_previous.clicked.connect(self.prev)
+        self.ui.b_day.clicked.connect(self.tag)
+        self.ui.pushButton_4.clicked.connect(self.monat)
+        self.ui.b_year.clicked.connect(self.jahr)
+        self.ui.b_deletetransaction.clicked.connect(self.delete)
+        self.ui.b_edittransaction.clicked.connect(self.transaktion_bearbeiten)
+
+    def transaktion_bearbeiten(self):
+        GroKontro.edit_trans(self, addtransactionwidget)
+
+    def delete(self):
+        GroKontro.delete_transaction(self)
+
+    def tag(self):
+        GroKontro.modussetzer(0)
+
+    def monat(self):
+        GroKontro.modussetzer(1)
+
+    def jahr(self):
+        GroKontro.modussetzer(2)
 
     def back(self):
         Kontro.fenster_zu(self)
-
         Kontro.fenster_auf(menuwidget)
 
     def addTransaction(self):
         addtransactionwidget.show()
+
+    def next(self):
+        GroKontro.weiter()
+
+    def prev(self):
+        GroKontro.zurueck()
 
 
 class AddTransactionWindow(qtw.QWidget):
@@ -226,6 +259,11 @@ class AddTransactionWindow(qtw.QWidget):
 
         self.ui = Ui_AddTransaction()
         self.ui.setupUi(self)
+
+        self.ui.b_safe.clicked.connect(self.speichern)
+
+    def speichern(self):
+        GroKontro.buchung_speichern(self)
 
 
 class RecipeWindow(qtw.QWidget):
@@ -239,7 +277,8 @@ class RecipeWindow(qtw.QWidget):
         self.ui.b_back.clicked.connect(self.back)
 
     def back(self):
-        pass
+        Kontro.fenster_zu(self)
+        Kontro.fenster_auf(grocerymainwidget)
 
     def open_recipe(self):
         Kontro.fenster_zu(self)

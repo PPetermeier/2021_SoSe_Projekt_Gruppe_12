@@ -40,11 +40,17 @@ class Ui_AddTransaction(object):
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         spacerItem3 = QtWidgets.QSpacerItem(150, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem3)
+
+
         self.i_date = QtWidgets.QDateEdit(self.verticalLayoutWidget)
         self.i_date.setAlignment(QtCore.Qt.AlignCenter)
-        self.i_date.setDateTime(QtCore.QDateTime(QtCore.QDate(2021, 11, 12), QtCore.QTime(0, 0, 0)))
+        self.i_date.setDateTime(QtCore.QDateTime(QtCore.QDate(2021, 8, 27), QtCore.QTime(0, 0, 0)))
         self.i_date.setCalendarPopup(True)
         self.i_date.setObjectName("i_date")
+
+
+
+
         self.horizontalLayout_5.addWidget(self.i_date)
         spacerItem4 = QtWidgets.QSpacerItem(150, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem4)
