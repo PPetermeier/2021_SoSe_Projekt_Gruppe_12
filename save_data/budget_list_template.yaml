@@ -1,19 +1,19 @@
 Budgetplaner:
 - archiviert: False
 - Details: Gehalt
-  Summe: 3000
+  Summe: '3000'
   Jahr: 2021
   Monat: Juli
   Tag: 01
   Rythmus: monatlich
 - Details: Autoversicherung
-  Summe: 50
+  Summe: '50'
   Jahr: 2021
   Monat: Juli
   Tag: 01
   Rythmus: monatlich
 - Details: MacBook Air
-  Summe: 2000
+  Summe: '2000'
   Jahr: 2021
   Monat: August
   Tag: 15
