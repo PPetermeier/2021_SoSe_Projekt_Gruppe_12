@@ -10,11 +10,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_ArchivFrame(object):
-    def setupUi(self, ArchivFrame):
-        ArchivFrame.setObjectName("ArchivFrame")
-        ArchivFrame.resize(514, 600)
-        self.horizontalLayoutWidget = QtWidgets.QWidget(ArchivFrame)
+class Ui_ArchivListFrame(object):
+
+    gezeigte_liste = ""
+
+    def setupUi(self, ArchivListFrame):
+        ArchivListFrame.setObjectName("ArchivListFrame")
+        ArchivListFrame.resize(514, 600)
+        self.horizontalLayoutWidget = QtWidgets.QWidget(ArchivListFrame)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(30, 40, 451, 80))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
@@ -32,12 +35,18 @@ class Ui_ArchivFrame(object):
         self.l_icon.setText("")
         self.l_icon.setObjectName("l_icon")
         self.horizontalLayout_4.addWidget(self.l_icon)
-        self.t_archivelist = QtWidgets.QTableWidget(ArchivFrame)
+        self.t_archivelist = QtWidgets.QTableWidget(ArchivListFrame)
         self.t_archivelist.setGeometry(QtCore.QRect(30, 180, 451, 281))
         self.t_archivelist.setObjectName("t_archivelist")
-        self.t_archivelist.setColumnCount(0)
-        self.t_archivelist.setRowCount(0)
-        self.horizontalLayoutWidget_3 = QtWidgets.QWidget(ArchivFrame)
+        self.t_archivelist.setColumnCount(3)
+
+        header = self.t_archivelist.horizontalHeader()
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+
+        self.t_archivelist.setHorizontalHeaderLabels(["Menge", "Artikel", "Kategorie"])
+        self.t_archivelist.verticalHeader().hide()
+
+        self.horizontalLayoutWidget_3 = QtWidgets.QWidget(ArchivListFrame)
         self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(30, 120, 451, 61))
         self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
@@ -50,7 +59,7 @@ class Ui_ArchivFrame(object):
         self.horizontalLayout_2.addWidget(self.l_description)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem2)
-        self.horizontalLayoutWidget_4 = QtWidgets.QWidget(ArchivFrame)
+        self.horizontalLayoutWidget_4 = QtWidgets.QWidget(ArchivListFrame)
         self.horizontalLayoutWidget_4.setGeometry(QtCore.QRect(30, 470, 451, 80))
         self.horizontalLayoutWidget_4.setObjectName("horizontalLayoutWidget_4")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_4)
@@ -72,24 +81,24 @@ class Ui_ArchivFrame(object):
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem4)
 
-        self.retranslateUi(ArchivFrame)
-        QtCore.QMetaObject.connectSlotsByName(ArchivFrame)
+        self.retranslateUi(ArchivListFrame)
+        QtCore.QMetaObject.connectSlotsByName(ArchivListFrame)
 
-    def retranslateUi(self, ArchivFrame):
+    def retranslateUi(self, ArchivListFrame):
         _translate = QtCore.QCoreApplication.translate
-        ArchivFrame.setWindowTitle(_translate("ArchivFrame", "Haushaltsplaner"))
-        self.l_titelarchive.setText(_translate("ArchivFrame", "Archiv"))
-        self.l_description.setText(_translate("ArchivFrame", "Archivierte Einkaufslisten"))
-        self.b_back.setText(_translate("ArchivFrame", "Zurück"))
-        self.b_viewarchive.setText(_translate("ArchivFrame", "Einkaufsliste ansehen"))
+        ArchivListFrame.setWindowTitle(_translate("ArchivListFrame", "Haushaltsplaner"))
+        self.l_titelarchive.setText(_translate("ArchivListFrame", "Archiv"))
+        self.l_description.setText(_translate("ArchivListFrame", "Archivierte Einkaufslisten"))
+        self.b_back.setText(_translate("ArchivListFrame", "Zurück"))
+        self.b_viewarchive.setText(_translate("ArchivListFrame", "Einkaufsliste ansehen"))
 import menu_rc
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    ArchivFrame = QtWidgets.QWidget()
-    ui = Ui_ArchivFrame()
-    ui.setupUi(ArchivFrame)
-    ArchivFrame.show()
+    ArchivListFrame = QtWidgets.QWidget()
+    ui = Ui_ArchivListFrame()
+    ui.setupUi(ArchivListFrame)
+    ArchivListFrame.show()
     sys.exit(app.exec_())

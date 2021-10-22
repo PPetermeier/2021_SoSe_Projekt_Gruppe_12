@@ -33,11 +33,10 @@ class Ui_ArchivFrame(object):
         self.l_icon.setText("")
         self.l_icon.setObjectName("l_icon")
         self.horizontalLayout_4.addWidget(self.l_icon)
-        self.t_archivelist = QtWidgets.QTableWidget(ArchivFrame)
+        self.t_archivelist = QtWidgets.QListWidget(ArchivFrame)
         self.t_archivelist.setGeometry(QtCore.QRect(30, 180, 451, 281))
         self.t_archivelist.setObjectName("t_archivelist")
-        self.t_archivelist.setColumnCount(0)
-        self.t_archivelist.setRowCount(0)
+
         self.horizontalLayoutWidget_3 = QtWidgets.QWidget(ArchivFrame)
         self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(30, 120, 451, 61))
         self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")

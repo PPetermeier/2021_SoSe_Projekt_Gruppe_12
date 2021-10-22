@@ -100,7 +100,6 @@ class Ui_Rezeptanleitung(object):
         Rezeptanleitung.setWindowTitle(_translate("Rezeptanleitung", "Haushaltsplaner"))
         self.l_recipe.setText(_translate("Rezeptanleitung", "\"Rezeptname\""))
         self.b_back.setText(_translate("Rezeptanleitung", "Zurück"))
-        self.l_recipe.setText(_translate("Rezeptanleitung", "\"Rezeptname\""))
         self.b_addrecipe.setText(_translate("Rezeptanleitung", "Hinzufügen"))
 import menu_rc
 

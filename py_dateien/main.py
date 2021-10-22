@@ -6,6 +6,8 @@ from groceryitemframe import Ui_Groceryitemframe
 from grocerymainframe import Ui_Grocerymainframe
 from recipeframe import Ui_RecipeWindow
 from instructionframe import Ui_Rezeptanleitung
+from archiveframe import Ui_ArchivFrame
+from archivelistframe import Ui_ArchivListFrame
 import shutil
 import os
 from pathlib import Path
@@ -22,7 +24,6 @@ cnx = mysql.connector.connect(user="hproot@hplogin",
                               port=3306,
                               database="hpdb");
 
-
 ##ES WIRD IMMER DIE ADMIN GROCERY ANGEZEIGT
 filepath = "../save_data/admin_grocery.yaml"
 filepathgrocery = "../save_data/admin_budget.yaml"
@@ -34,7 +35,6 @@ GroKontro = Logic.BudgetController()
 instructionswidget = None
 recipewidget = None
 grocerymainwidget = None
-
 
 
 class LoginWindow(qtw.QWidget):
@@ -69,7 +69,7 @@ class LoginWindow(qtw.QWidget):
             except IOError:
                 shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
 
-            #menuwidget = MenuWindow()
+            # menuwidget = MenuWindow()
             menuwidget.show()
 
 
@@ -96,7 +96,7 @@ class LoginWindow(qtw.QWidget):
                         except IOError:
                             shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
 
-                        #menuwidget = MenuWindow()
+                        # menuwidget = MenuWindow()
                         menuwidget.show()
                 else:
                     qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
@@ -162,6 +162,11 @@ class GrocerymainWindow(qtw.QWidget):
         self.ui.b_openlist.clicked.connect(self.open_list)
         self.ui.b_recipe.clicked.connect(self.open_recipes)
         self.ui.b_delete.clicked.connect(self.delete_list)
+        self.ui.b_archiv.clicked.connect(self.open_archive)
+
+    def open_archive(self):
+        Kontro.einkaufslisten(filepath, archivewidget, True)
+        Kontro.fenster_zu(self)
 
     def delete_list(self):
         selected = self.ui.listofflist.currentRow()
@@ -181,7 +186,7 @@ class GrocerymainWindow(qtw.QWidget):
         selected = self.ui.listofflist.currentItem().text()
 
         print("liste geöffnet")
-        Kontro.liste_auf(groceryitemwidget, filepath, selected)
+        Kontro.liste_auf(groceryitemwidget, filepath, False, selected)
 
     def open_recipes(self):
         Kontro.fenster_zu(self)
@@ -315,29 +320,62 @@ class AnleitungsWindow(qtw.QWidget):
         for reihe in range(self.ui.t_incredientlist.rowCount()):
             item = self.ui.t_incredientlist.item(reihe, 0)
 
-            #print(item.text())
+            # print(item.text())
 
             if item.checkState():
-                zutat = [str(self.ui.t_incredientlist.item(reihe, 0).text()) , str(self.ui.t_incredientlist.item(reihe, 1).text())]
+                zutat = [str(self.ui.t_incredientlist.item(reihe, 0).text()),
+                         str(self.ui.t_incredientlist.item(reihe, 1).text())]
 
                 zutaten.append(zutat)
 
-
         print(zutaten)
-
-
         Kontro.zutaten_zu_einkaufsliste(liste, zutaten)
 
 
-if __name__ == '__main__':
+class ArchiveWindow(qtw.QWidget):
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.ui = Ui_ArchivFrame()
+        self.ui.setupUi(self)
+
+        self.ui.b_back.clicked.connect(self.back)
+        self.ui.b_viewarchive.clicked.connect(self.viewarchivedlist)
+
+    def viewarchivedlist(self):
+        Kontro.fenster_zu(self)
+
+        selected = self.ui.t_archivelist.currentItem().text()
+
+        Kontro.liste_auf(archivelistwidget, filepath, True, selected)
+
+    def back(self):
+        Kontro.fenster_zu(self)
+        Kontro.fenster_auf(grocerymainwidget)
+
+
+class ArchiveListWindow(qtw.QWidget):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.ui = Ui_ArchivListFrame()
+        self.ui.setupUi(self)
+
+        self.ui.b_back.clicked.connect(self.back)
+
+    def back(self):
+        Kontro.fenster_zu(self)
+        Kontro.einkaufslisten(filepath, archivewidget, True)
+
+
+if __name__ == '__main__':
     app = qtw.QApplication([])
 
     loginwidget = LoginWindow()
 
     Kontro.fenster_auf(loginwidget)
-
-    #menuwidget = 'None'
 
     menuwidget = MenuWindow()
     budgetplanerwidget = BudgetplanerMainWindow()
@@ -346,6 +384,8 @@ if __name__ == '__main__':
     groceryitemwidget = GroceryitemWindow()
     recipewidget = RecipeWindow()
     instructionswidget = AnleitungsWindow()
+    archivewidget = ArchiveWindow()
+    archivelistwidget = ArchiveListWindow()
 
     #
     # loginwidget2 = LoginWindow()
@@ -358,7 +398,5 @@ if __name__ == '__main__':
     # loginwidget2.ui.login_button.clicked.connect(lambda: win.setCurrentIndex(1))
     # win.resize(1200,1200)
     # win.show()
-
-
 
     app.exec_()

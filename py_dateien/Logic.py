@@ -17,7 +17,13 @@ class Controller:
     def einkaufslisten(self, filepath, fenster, archiviert):
         print("Controller triggert")
 
-        angezeigteListe = fenster.ui.listofflist
+        angezeigteListe = None
+
+        if archiviert:
+            print("archi")
+            angezeigteListe = fenster.ui.t_archivelist
+        else:
+            angezeigteListe = fenster.ui.listofflist
 
         angezeigteListe.clear()
 
@@ -42,13 +48,20 @@ class Controller:
 
         neues_Fenster.show()
 
-    def liste_auf(self, neues_Fenster, filepath, liste=None):
+    def liste_auf(self, neues_Fenster, filepath, archiviert, liste=None):
 
+        print("flagge1")
+
+        print(neues_Fenster)
         neues_Fenster.gezeigte_liste = liste
 
         print("->", neues_Fenster.gezeigte_liste)
 
-        angezeigteListe = neues_Fenster.ui.listofflist
+        if archiviert:
+            angezeigteListe = neues_Fenster.ui.t_archivelist
+        else:
+            angezeigteListe = neues_Fenster.ui.listofflist
+
         angezeigteListe.setRowCount(0)
 
         print("bis hier")
@@ -124,12 +137,15 @@ class Controller:
 
         print("in der anzeige")
 
+        fenster.ui.l_recipe.setText(rezept)
+
+
         zutaten, schritte = ri.readreceipe(rezept)
 
         print("zutaten ->", zutaten)
         print("schritte ->", schritte)
 
-        fenster.ui.t_incredientlist.clear()
+        fenster.ui.t_incredientlist.setRowCount(0)
         fenster.ui.list_instructions.clear()
 
         for z in zutaten:
