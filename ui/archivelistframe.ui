@@ -325,22 +325,31 @@
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>40</width>
+          <width>300</width>
           <height>20</height>
          </size>
         </property>
        </spacer>
       </item>
       <item>
+       <widget class="QComboBox" name="d_list"/>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_4">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>40</width>
+          <width>300</width>
           <height>20</height>
          </size>
         </property>
@@ -391,12 +400,12 @@ color: white;</string>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="b_reuselist">
+       <widget class="QPushButton" name="b_reuse">
         <property name="styleSheet">
          <string notr="true">background-color: orange;</string>
         </property>
         <property name="text">
-         <string>Liste verwenden</string>
+         <string>Artikel verwenden</string>
         </property>
        </widget>
       </item>
