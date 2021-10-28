@@ -147,6 +147,8 @@ class Ui_Budgetplaner(object):
         self.horizontalLayout_2.addWidget(self.listofftransaction)
 
         self.listofftransaction.setColumnCount(3)
+        self.listofftransaction.setHorizontalHeaderLabels(["Name", "Betrag", "Datum"])
+
         self.listofftransaction.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         self.listofftransaction.verticalHeader().hide()
         self.listofftransaction.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)

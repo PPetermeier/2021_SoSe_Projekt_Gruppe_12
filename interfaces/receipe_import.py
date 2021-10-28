@@ -28,7 +28,7 @@ def readreceipe(rezept = ''):
                     zutat = [str(i['quantity1']) + " " + str(i['unit_short']), str(i['product'])]
                     zutaten.append(zutat)
                 except:
-                    print("hier war das and more")
+                    pass
 
             for s in data[key]['steps']:
 
@@ -37,9 +37,7 @@ def readreceipe(rezept = ''):
 
                     schritte.append(schritt)
                 except:
-                    print("hier war wieder das and more")
-
-    #print(zutaten, schritte)
+                    pass
     return zutaten, schritte
 
 def get_all_receipes():

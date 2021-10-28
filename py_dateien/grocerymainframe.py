@@ -16,8 +16,6 @@ class Ui_Grocerymainframe(object):
     # Einkaufslisten wird in der main übergeben
     def setupUi(self, Einkaufsplaner):
 
-        #print("frame triggert", Einkaufslisten)
-
         Einkaufsplaner.setObjectName("Einkaufsplaner")
         Einkaufsplaner.resize(965, 553)
         self.verticalLayoutWidget = QtWidgets.QWidget(Einkaufsplaner)

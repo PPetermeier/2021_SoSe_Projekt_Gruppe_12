@@ -12,74 +12,144 @@ from PyQt5 import QtCore
 
 
 class Controller:
+    currEinkaufsliste = ''
+    filepath = None
 
     # erhält Liste der Einkaufslisten von jsonconnector und returnt diese
     def einkaufslisten(self, filepath, fenster, archiviert):
-        print("Controller triggert")
+
+        self.filepath = filepath
 
         angezeigteListe = None
 
         if archiviert:
-            print("archi")
+
             angezeigteListe = fenster.ui.t_archivelist
         else:
             angezeigteListe = fenster.ui.listofflist
 
         angezeigteListe.clear()
 
-        for x in yc.einkaeufe(filepath, archiviert):
-            print(x)
-            item = qtw.QListWidgetItem(x)
-            angezeigteListe.addItem(x)
+        try:
+            for x in yc.einkaeufe(filepath, archiviert):
+                item = qtw.QListWidgetItem(x)
+                angezeigteListe.addItem(x)
+
+        except:
+            print("Fehler beim Befüllen einer Einkaufsliste")
 
         fenster.show()
 
-    def einkaufsliste_loeschen(self, fenster, liste, filepath):
+    def einkaufsliste_loeschen(self, fenster, liste):
+
+        listenname = fenster.ui.listofflist.currentItem().text()
 
         fenster.ui.listofflist.takeItem(liste)
 
-        yc.liste_entfernen(filepath, liste)
+        yc.liste_entfernen(self.filepath, listenname)
 
     def fenster_auf(self, neues_Fenster):
 
-        print("fenster geöffnet")
+            neues_Fenster.show()
 
-        print(neues_Fenster)
+    def neue_liste(self, fenster):
 
-        neues_Fenster.show()
+        listen = yc.listenelemente(self.filepath)
+
+        neuer_name = 'neue Liste ' + str(len(listen))
+
+        listen[neuer_name] = [{'archiviert': False}]
+
+        yc.yaml_output(self.filepath, listen)
+
+        fenster.ui.listofflist.clear()
+
+        for x in yc.einkaeufe(self.filepath, False):
+            item = qtw.QListWidgetItem(x)
+            fenster.ui.listofflist.addItem(x)
+
+        fenster.show()
 
     def liste_auf(self, neues_Fenster, filepath, archiviert, liste=None):
 
-        print("flagge1")
-
-        print(neues_Fenster)
         neues_Fenster.gezeigte_liste = liste
 
-        print("->", neues_Fenster.gezeigte_liste)
-
         if archiviert:
-            angezeigteListe = neues_Fenster.ui.t_archivelist
+            angezeigteListe = neues_Fenster.ui.listofflist
+
+            neues_Fenster.ui.l_archivedname.setText(liste)
+
+            neues_Fenster.ui.d_list.clear()
+            neues_Fenster.ui.d_list.addItems(yc.einkaeufe(filepath, False))
+
+            angezeigteListe.setRowCount(0)
+
+            for x in yc.listenelemente(filepath)[liste]:
+
+                if 'archiviert' in x:
+                    continue
+
+                zeile = angezeigteListe.rowCount()
+
+                angezeigteListe.insertRow(zeile)
+
+                item = qtw.QTableWidgetItem(str(x['amount']))
+                item.setCheckState(False)
+
+                angezeigteListe.setItem(zeile, 0, qtw.QTableWidgetItem(item))
+                angezeigteListe.setItem(zeile, 1, qtw.QTableWidgetItem(str(x['item'])))
+                angezeigteListe.setItem(zeile, 2, qtw.QTableWidgetItem(str(x['category'])))
+
+
         else:
             angezeigteListe = neues_Fenster.ui.listofflist
 
-        angezeigteListe.setRowCount(0)
+            neues_Fenster.ui.i_amount.setText("")
+            neues_Fenster.ui.i_categorie.setText("")
+            neues_Fenster.ui.i_article.setText("")
+            neues_Fenster.ui.i_listname.setText(str(liste))
 
-        print("bis hier")
+            angezeigteListe.setRowCount(0)
 
-        for x in yc.listenelemente(filepath)[liste]:
+            for x in yc.listenelemente(filepath)[liste]:
 
-            if 'archiviert' in x:
-                continue
+                if 'archiviert' in x:
+                    continue
 
-            zeile = angezeigteListe.rowCount()
+                zeile = angezeigteListe.rowCount()
 
-            angezeigteListe.insertRow(zeile)
+                angezeigteListe.insertRow(zeile)
 
-            angezeigteListe.setItem(zeile, 0, qtw.QTableWidgetItem(str(x['amount'])))
-            angezeigteListe.setItem(zeile, 1, qtw.QTableWidgetItem(str(x['item'])))
-            angezeigteListe.setItem(zeile, 2, qtw.QTableWidgetItem(str(x['category'])))
+                angezeigteListe.setItem(zeile, 0, qtw.QTableWidgetItem(str(x['amount'])))
+                angezeigteListe.setItem(zeile, 1, qtw.QTableWidgetItem(str(x['item'])))
+                angezeigteListe.setItem(zeile, 2, qtw.QTableWidgetItem(str(x['category'])))
 
         neues_Fenster.show()
+
+    def liste_archivieren(self, fenster, filepath):
+
+        listen = yc.listenelemente(filepath)
+
+        for l in listen:
+            if l == fenster.gezeigte_liste:
+                listen[l][0]['archiviert'] = True
+
+        yc.yaml_output(filepath, listen)
+
+    def liste_umbenennen(self, fenster, filepath):
+        listen = yc.listenelemente(filepath)
+
+        a_n = fenster.ui.i_listname.text()
+
+        if a_n in listen or a_n == '':
+            #falls der Name bereits vergeben sein sollte
+            return False
+        else:
+            listen[a_n] = listen.pop(fenster.gezeigte_liste)
+
+            yc.yaml_output(filepath, listen)
+
+            return True
 
     def fenster_zu(self, altes_Fenster):
 
@@ -89,12 +159,10 @@ class Controller:
         pass
 
     def artikel_hinzufuegen(self, fenster, filepath):
-        print("adder geklickt")
 
         if fenster.ui.i_amount.text() == '' or fenster.ui.i_article.text() == '' or fenster.ui.i_categorie.text() == '':
-            print("eins der angaben ist leer")
+            print("mindestens eine der Angaben ist leer")
         else:
-            print(fenster.ui.i_amount.text(), fenster.ui.i_article.text(), fenster.ui.i_categorie.text())
 
             zeile = fenster.ui.listofflist.rowCount()
 
@@ -104,22 +172,15 @@ class Controller:
             fenster.ui.listofflist.setItem(zeile, 1, qtw.QTableWidgetItem(str(fenster.ui.i_article.text())))
             fenster.ui.listofflist.setItem(zeile, 2, qtw.QTableWidgetItem(str(fenster.ui.i_categorie.text())))
 
-            print(yc.listenelemente(filepath)[fenster.gezeigte_liste])
-
             tester = yc.listenelemente(filepath)
             tester[fenster.gezeigte_liste].append(
                 {'amount': str(fenster.ui.i_amount.text()), 'category': str(fenster.ui.i_categorie.text()),
                  'item': str(fenster.ui.i_article.text())})
 
-            print("neu ->", tester)
-
             yc.yaml_output(filepath, tester)
 
-            print("ganz neu ->", yc.listenelemente(filepath))
 
     def rezepte_auf(self, fenster):
-
-        print("rezepte geöffnet")
 
         liste = ri.get_all_receipes()
 
@@ -135,21 +196,14 @@ class Controller:
 
     def rezept_anzeige(self, fenster, filepath, rezept=""):
 
-        print("in der anzeige")
-
         fenster.ui.l_recipe.setText(rezept)
 
-
         zutaten, schritte = ri.readreceipe(rezept)
-
-        print("zutaten ->", zutaten)
-        print("schritte ->", schritte)
 
         fenster.ui.t_incredientlist.setRowCount(0)
         fenster.ui.list_instructions.clear()
 
         for z in zutaten:
-            print(z)
 
             zeile = fenster.ui.t_incredientlist.rowCount()
 
@@ -163,20 +217,35 @@ class Controller:
             # fenster.ui.t_incredientlist.setItem(zeile, 2, qtw.QTableWidgetItem(str(z[1])))
 
         for s in schritte:
-            print(s)
 
             item = qtw.QListWidgetItem(s)
             fenster.ui.list_instructions.addItem(s)
 
+        fenster.ui.d_list.clear()
         fenster.ui.d_list.addItems(yc.einkaeufe(filepath, False))
 
         fenster.show()
 
-    def zutaten_zu_einkaufsliste(self):
+    def zutaten_zu_einkaufsliste(self, liste, zutaten, filepath, archiv):
 
-        ## REIN HIER
+        rezepte = yc.listenelemente(filepath)
 
-        pass
+        for r in rezepte:
+            if r == liste:
+                 for z in zutaten:
+
+                    if archiv:
+                        rezepte[r].append(
+                            {'amount': str(z[0]), 'category': str(z[2]),
+                             'item': str(z[1])})
+                    else:
+
+                        rezepte[r].append(
+                            {'amount': str(z[0]), 'category': str("aus Rezepten"),
+                             'item': str(z[1])})
+
+
+        yc.yaml_output(filepath, rezepte)
 
 
 class BudgetController():
@@ -205,9 +274,9 @@ class BudgetController():
         if index == 2:
             self.fenster.ui.l_date.setText(str(self.jahr))
         elif index == 1:
-            self.fenster.ui.l_date.setText(str(self.monat + str(self.jahr)))
+            self.fenster.ui.l_date.setText(str(self.monat + " " + str(self.jahr)))
         elif index == 0:
-            self.fenster.ui.l_date.setText(str(str(self.tag) + self.monat + str(self.jahr)))
+            self.fenster.ui.l_date.setText(str(str(self.tag) + " " + self.monat + " " + str(self.jahr)))
 
         self.liste_aktualisieren()
 
@@ -341,8 +410,6 @@ class BudgetController():
                  'Tag': tag,
                  'Rythmus': rythmus}
 
-        print("dicty -> ", dicty)
-
         yc.add_transaction(self.filepath, dicty)
 
     def delete_transaction(self, fenster):
@@ -353,8 +420,6 @@ class BudgetController():
             return
 
         for x in selected:
-            # erst in yaml löschen
-            # print("->", fenster.ui.listofftransaction.item(x.Row(),0).text())
 
             details = fenster.ui.listofftransaction.item(x.row(), 0).text()
             summe = fenster.ui.listofftransaction.item(x.row(), 1).text()
@@ -365,8 +430,6 @@ class BudgetController():
             jahr = datum.split(" ")[2]
 
             yc.remove_trans(self.filepath, details, summe, tag, monat, jahr)
-
-            print(details, summe, datum)
 
             self.liste_aktualisieren()
 
@@ -385,32 +448,22 @@ class BudgetController():
         monat = None
         jahr = None
 
-
         try:
             details, summe, datum, tag, monat, jahr = self.delete_transaction(fenster)
         except:
             print("keine Zeile ausgewählt")
             return
 
-
-        print("glagge1")
-
         adder_fenster.ui.i_date.setDateTime(
             QtCore.QDateTime(QtCore.QDate(int(jahr), int(monat), int(tag)), QtCore.QTime(0, 0, 0)))
-
-        print("flagge 2")
 
         adder_fenster.ui.i_sum.setText(summe)
         adder_fenster.ui.i_details.setText(details)
 
-        print("glagge 4")
-
         adder_fenster.show()
 
-    def test(self):
-        Kalender = c.Calendar()
+    def neue_trans(self, fenster):
+        fenster.ui.i_sum.setText("")
+        fenster.ui.i_details.setText("")
 
-        for i in Kalender.itermonthdays(2021, 10):
-            self.tage_im_monat = i
-
-        print("der", self.monate[datetime.datetime.now().month - 1], "hat", self.tage_im_monat, "Tage")
+        fenster.show()

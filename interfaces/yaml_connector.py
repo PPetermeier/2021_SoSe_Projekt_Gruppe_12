@@ -1,6 +1,27 @@
 import yaml
 
 
+
+def tester():
+    with open("../save_data/admin_grocery.yaml") as f:
+        yamltester = yaml.safe_load(f)
+
+
+def liste_entfernen(path, liste):
+
+    yamlfile = None
+
+    try:
+        with open(path) as file:
+            yamlfile = yaml.safe_load(file)
+            for l in yamlfile:
+                if l == liste:
+                    del yamlfile[liste]
+    except:
+        pass
+
+    yaml_output(path, yamlfile)
+
 def einkaeufe(path, archiviert):
     try:
         with open(path) as file:
@@ -21,7 +42,6 @@ def listenelemente(path):
     try:
         with open(path) as fh:
             data = yaml.safe_load(fh)
-            print(data)
         return data
     except (RuntimeError, TypeError, NameError):
         pass
@@ -56,11 +76,7 @@ def add_transaction(path, buchung):
         with open(path) as fh:
             data = yaml.safe_load(fh)
 
-            print(data['Budgetplaner'])
-
             data['Budgetplaner'].append(buchung)
-
-            print(data['Budgetplaner'])
 
         with open(path, 'w') as outfile:  # Dictionary zurück in YAML schreiben
              yaml.dump(data, outfile, default_flow_style=False)
@@ -80,15 +96,9 @@ def remove_trans(path, details, summe, tag, monat, jahr):
                     continue
                 if e['Details'] == details and e['Summe'] == summe and e['Tag'] == int(tag) and e['Monat'] == monat and e['Jahr'] == int(jahr):
 
-                    print("1->",data['Budgetplaner'])
-
                     zudel = data['Budgetplaner'].index(e)
 
-                    print("2->", data['Budgetplaner'][data['Budgetplaner'].index(e)])
-
                     del data['Budgetplaner'][zudel]
-
-                    print("3->", data['Budgetplaner'])
 
                     break
 

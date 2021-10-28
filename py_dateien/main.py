@@ -7,7 +7,7 @@ from grocerymainframe import Ui_Grocerymainframe
 from recipeframe import Ui_RecipeWindow
 from instructionframe import Ui_Rezeptanleitung
 from archiveframe import Ui_ArchivFrame
-from archivelistframe import Ui_ArchivListFrame
+from archivelistframe import Ui_ArchivelistFrame
 import shutil
 import os
 from pathlib import Path
@@ -17,6 +17,11 @@ from PyQt5 import QtCore as qtc
 import mysql.connector
 
 import Logic
+
+
+######## Rezept einkaufslisten werden mehrfach angezeigt, liste muss gecleart werden
+
+
 
 cnx = mysql.connector.connect(user="hproot@hplogin",
                               password="<Y#T<>1Ug`/q",
@@ -52,56 +57,35 @@ class LoginWindow(qtw.QWidget):
 
         username = self.ui.user_edit.text()
         password = self.ui.pass_edit.text()
-        # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if username == 'admin' and (password == 'admin' or password == ''):
-            # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            username_verification = 'admin'
-            qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
-            loginwidget.close()
-            filepath = "../save_data/{}_grocery.yaml".format(username_verification.lower())
-            filepathgrocery = "../save_data/{}_grocery.yaml".format(username_verification.lower())
-            try:
-                f = open(filepath)
-            except IOError:
-                shutil.copy('../save_data/grocery_list_template.yaml', filepath)
-            try:
-                f = open(filepathgrocery)
-            except IOError:
-                shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
 
-            # menuwidget = MenuWindow()
-            menuwidget.show()
+        try:
+            cursordb = cnx.cursor()
+            username_verification = self.ui.user_edit.text()
+            password_verification = self.ui.pass_edit.text()
+            sql = "select * from user_database_login where username = %s and userpassword = %s"
+            cursordb.execute(sql, [(username_verification), (password_verification)])
+            results = cursordb.fetchall()
+            if results:
+                for i in results:
+                    qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
+                    loginwidget.close()
+                    filepath = "../save_data/{}_grocery.yaml".format(username_verification.lower())
+                    filepathgrocery = "../save_data/{}_budget.yaml".format(username_verification.lower())
+                    try:
+                        f = open(filepath)
+                    except IOError:
+                        shutil.copy('../save_data/grocery_list_template.yaml', filepath)
+                    try:
+                        f = open(filepathgrocery)
+                    except IOError:
+                        shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
 
-
-        else:
-            try:
-                cursordb = cnx.cursor()
-                username_verification = self.ui.user_edit.text()
-                password_verification = self.ui.pass_edit.text()
-                sql = "select * from user_database_login where username = %s and userpassword = %s"
-                cursordb.execute(sql, [(username_verification), (password_verification)])
-                results = cursordb.fetchall()
-                if results:
-                    for i in results:
-                        qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
-                        loginwidget.close()
-                        filepath = "../save_data/{}_grocery.yaml".format(username_verification.lower())
-                        filepathgrocery = "../save_data/{}_budget.yaml".format(username_verification.lower())
-                        try:
-                            f = open(filepath)
-                        except IOError:
-                            shutil.copy('../save_data/grocery_list_template.yaml', filepath)
-                        try:
-                            f = open(filepathgrocery)
-                        except IOError:
-                            shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
-
-                        # menuwidget = MenuWindow()
-                        menuwidget.show()
-                else:
-                    qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
-            except Exception as err:
-                qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
+                    # menuwidget = MenuWindow()
+                    menuwidget.show()
+            else:
+                qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
+        except Exception as err:
+            qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
 
     def register(self):
         try:
@@ -178,14 +162,12 @@ class GrocerymainWindow(qtw.QWidget):
 
     def newList(self):
         Kontro.fenster_zu(self)
-        Kontro.fenster_auf(groceryitemwidget)
+        Kontro.neue_liste(self)
 
     def open_list(self):
         Kontro.fenster_zu(self)
 
         selected = self.ui.listofflist.currentItem().text()
-
-        print("liste geöffnet")
         Kontro.liste_auf(groceryitemwidget, filepath, False, selected)
 
     def open_recipes(self):
@@ -202,13 +184,24 @@ class GroceryitemWindow(qtw.QWidget):
         self.ui.setupUi(self)
         self.ui.b_back.clicked.connect(self.back)
         self.ui.b_add.clicked.connect(self.add)
+        self.ui.b_archive.clicked.connect(self.archive_list)
+        self.ui.b_rename.clicked.connect(self.rename)
 
     def back(self):
         Kontro.fenster_zu(self)
-        Kontro.fenster_auf(grocerymainwidget)
+        Kontro.einkaufslisten(filepath, grocerymainwidget, False)
 
     def add(self):
         Kontro.artikel_hinzufuegen(self, filepath)
+
+    def archive_list(self):
+        Kontro.liste_archivieren(self, filepath)
+        self.back()
+
+    def rename(self):
+
+        if Kontro.liste_umbenennen(self, filepath):
+            self.back()
 
 
 class BudgetplanerMainWindow(qtw.QWidget):
@@ -248,7 +241,8 @@ class BudgetplanerMainWindow(qtw.QWidget):
         Kontro.fenster_auf(menuwidget)
 
     def addTransaction(self):
-        addtransactionwidget.show()
+        GroKontro.neue_trans(addtransactionwidget)
+
 
     def next(self):
         GroKontro.weiter()
@@ -290,7 +284,6 @@ class RecipeWindow(qtw.QWidget):
 
         selected = self.ui.t_recipelist.currentItem().text()
 
-        print("rezept geöffnet")
         Kontro.rezept_anzeige(instructionswidget, filepath, selected)
 
 
@@ -315,12 +308,8 @@ class AnleitungsWindow(qtw.QWidget):
 
         zutaten = []
 
-        print(liste)
-
         for reihe in range(self.ui.t_incredientlist.rowCount()):
             item = self.ui.t_incredientlist.item(reihe, 0)
-
-            # print(item.text())
 
             if item.checkState():
                 zutat = [str(self.ui.t_incredientlist.item(reihe, 0).text()),
@@ -328,8 +317,7 @@ class AnleitungsWindow(qtw.QWidget):
 
                 zutaten.append(zutat)
 
-        print(zutaten)
-        Kontro.zutaten_zu_einkaufsliste(liste, zutaten)
+        Kontro.zutaten_zu_einkaufsliste(liste, zutaten, filepath, False)
 
 
 class ArchiveWindow(qtw.QWidget):
@@ -360,14 +348,35 @@ class ArchiveListWindow(qtw.QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.ui = Ui_ArchivListFrame()
+        self.ui = Ui_ArchivelistFrame()
         self.ui.setupUi(self)
 
         self.ui.b_back.clicked.connect(self.back)
+        self.ui.b_reuse.clicked.connect(self.reuse)
 
     def back(self):
         Kontro.fenster_zu(self)
         Kontro.einkaufslisten(filepath, archivewidget, True)
+
+    def reuse(self):
+
+        liste = self.ui.d_list.currentText()
+
+        zutaten = []
+
+        for reihe in range(self.ui.listofflist.rowCount()):
+            item = self.ui.listofflist.item(reihe, 0)
+
+            if item.checkState():
+                zutat = [str(self.ui.listofflist.item(reihe, 0).text()),
+                         str(self.ui.listofflist.item(reihe, 1).text()),
+                         str(self.ui.listofflist.item(reihe, 2).text())]
+
+                zutaten.append(zutat)
+
+        Kontro.zutaten_zu_einkaufsliste(liste, zutaten, filepath, True)
+
+
 
 
 if __name__ == '__main__':
