@@ -77,24 +77,6 @@ class Ui_Groceryitemframe(object):
         spacerItem6 = QtWidgets.QSpacerItem(90, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem6)
 
-        #Wird nicht mehr benötigt
-
-        # self.l_mount = QtWidgets.QLabel(self.verticalLayoutWidget)
-        # self.l_mount.setStyleSheet("color: green;")
-        # self.l_mount.setAlignment(QtCore.Qt.AlignCenter)
-        # self.l_mount.setObjectName("l_mount")
-        # self.horizontalLayout_6.addWidget(self.l_mount)
-        # self.l_article = QtWidgets.QLabel(self.verticalLayoutWidget)
-        # self.l_article.setStyleSheet("color: green;")
-        # self.l_article.setAlignment(QtCore.Qt.AlignCenter)
-        # self.l_article.setObjectName("l_article")
-        # self.horizontalLayout_6.addWidget(self.l_article)
-        # self.l_categorie = QtWidgets.QLabel(self.verticalLayoutWidget)
-        # self.l_categorie.setStyleSheet("color: green;")
-        # self.l_categorie.setAlignment(QtCore.Qt.AlignCenter)
-        # self.l_categorie.setObjectName("l_categorie")
-        # self.horizontalLayout_6.addWidget(self.l_categorie)
-
 
         spacerItem7 = QtWidgets.QSpacerItem(90, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem7)
@@ -109,6 +91,8 @@ class Ui_Groceryitemframe(object):
         self.listofflist.setStyleSheet("font-size:12pt;")
         self.listofflist.setObjectName("listofflist")
         self.horizontalLayout_2.addWidget(self.listofflist)
+        self.listofflist.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+
 
         # Drei Spalten erstellt
         self.listofflist.setColumnCount(3)

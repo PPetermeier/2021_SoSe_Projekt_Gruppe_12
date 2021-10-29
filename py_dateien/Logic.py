@@ -40,6 +40,43 @@ class Controller:
 
         fenster.show()
 
+    def artikel_loeschen(self, fenster):
+
+        index = fenster.ui.listofflist.currentRow()
+
+        amount = str(fenster.ui.listofflist.item(index, 0).text())
+
+        art = fenster.ui.listofflist.item(index, 1).text()
+
+        cat = fenster.ui.listofflist.item(index, 2).text()
+
+        fenster.ui.listofflist.removeRow(index)
+
+        listen = yc.listenelemente(self.filepath)
+
+
+        print(amount)
+
+        for r in listen:
+            if self.currEinkaufsliste == r:
+                for x in listen[r]:
+
+                    listenindex = listen[r].index(x)
+
+                    try:
+                        if str(listen[r][listenindex]['amount']) == amount and str(listen[r][listenindex]['category']) == cat and str(listen[r][listenindex]['item']) == art:
+                            del listen[r][listenindex]
+                            break
+
+
+                    except:
+                        pass
+
+
+        yc.yaml_output(self.filepath, listen)
+
+
+
     def einkaufsliste_loeschen(self, fenster, liste):
 
         listenname = fenster.ui.listofflist.currentItem().text()
@@ -71,6 +108,8 @@ class Controller:
         fenster.show()
 
     def liste_auf(self, neues_Fenster, filepath, archiviert, liste=None):
+
+        self.currEinkaufsliste = liste
 
         neues_Fenster.gezeigte_liste = liste
 

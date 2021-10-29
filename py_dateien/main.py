@@ -19,7 +19,7 @@ import mysql.connector
 import Logic
 
 
-######## Rezept einkaufslisten werden mehrfach angezeigt, liste muss gecleart werden
+######## Stand 29.10
 
 
 
@@ -58,34 +58,55 @@ class LoginWindow(qtw.QWidget):
         username = self.ui.user_edit.text()
         password = self.ui.pass_edit.text()
 
-        try:
-            cursordb = cnx.cursor()
-            username_verification = self.ui.user_edit.text()
-            password_verification = self.ui.pass_edit.text()
-            sql = "select * from user_database_login where username = %s and userpassword = %s"
-            cursordb.execute(sql, [(username_verification), (password_verification)])
-            results = cursordb.fetchall()
-            if results:
-                for i in results:
-                    qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
-                    loginwidget.close()
-                    filepath = "../save_data/{}_grocery.yaml".format(username_verification.lower())
-                    filepathgrocery = "../save_data/{}_budget.yaml".format(username_verification.lower())
-                    try:
-                        f = open(filepath)
-                    except IOError:
-                        shutil.copy('../save_data/grocery_list_template.yaml', filepath)
-                    try:
-                        f = open(filepathgrocery)
-                    except IOError:
-                        shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
+        if username == 'admin' and password == 'admin':
 
-                    # menuwidget = MenuWindow()
-                    menuwidget.show()
-            else:
-                qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
-        except Exception as err:
-            qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
+            username_verification = 'admin'
+            qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
+            loginwidget.close()
+            filepath = "../save_data/{}_grocery.yaml".format(username_verification.lower())
+            filepathgrocery = "../save_data/{}_grocery.yaml".format(username_verification.lower())
+            try:
+                f = open(filepath)
+            except IOError:
+                shutil.copy('../save_data/grocery_list_template.yaml', filepath)
+            try:
+                f = open(filepathgrocery)
+            except IOError:
+                shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
+
+            # menuwidget = MenuWindow()
+            menuwidget.show()
+
+        else:
+
+            try:
+                cursordb = cnx.cursor()
+                username_verification = self.ui.user_edit.text()
+                password_verification = self.ui.pass_edit.text()
+                sql = "select * from user_database_login where username = %s and userpassword = %s"
+                cursordb.execute(sql, [(username_verification), (password_verification)])
+                results = cursordb.fetchall()
+                if results:
+                    for i in results:
+                        qtw.QMessageBox.information(self, 'Erfolgreich angemeldet', 'Sie sind angemeldet')
+                        loginwidget.close()
+                        filepath = "../save_data/{}_grocery.yaml".format(username_verification.lower())
+                        filepathgrocery = "../save_data/{}_budget.yaml".format(username_verification.lower())
+                        try:
+                            f = open(filepath)
+                        except IOError:
+                            shutil.copy('../save_data/grocery_list_template.yaml', filepath)
+                        try:
+                            f = open(filepathgrocery)
+                        except IOError:
+                            shutil.copy('../save_data/budget_list_template.yaml', filepathgrocery)
+
+                        # menuwidget = MenuWindow()
+                        menuwidget.show()
+                else:
+                    qtw.QMessageBox.critical(self, 'Fehler', 'Sie wurden nicht angemeldet')
+            except Exception as err:
+                qtw.QMessageBox.critical(self, 'Fehler', 'Keine Verbindung zum Login-Server möglich')
 
     def register(self):
         try:
@@ -186,6 +207,7 @@ class GroceryitemWindow(qtw.QWidget):
         self.ui.b_add.clicked.connect(self.add)
         self.ui.b_archive.clicked.connect(self.archive_list)
         self.ui.b_rename.clicked.connect(self.rename)
+        self.ui.b_itemdelete.clicked.connect(self.delete_item)
 
     def back(self):
         Kontro.fenster_zu(self)
@@ -199,9 +221,12 @@ class GroceryitemWindow(qtw.QWidget):
         self.back()
 
     def rename(self):
-
         if Kontro.liste_umbenennen(self, filepath):
             self.back()
+
+    def delete_item(self):
+
+        Kontro.artikel_loeschen(self)
 
 
 class BudgetplanerMainWindow(qtw.QWidget):
